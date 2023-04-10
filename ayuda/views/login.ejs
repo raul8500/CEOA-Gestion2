@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Hugo 0.87.0">
+    <link rel="icon" href="/img/logo.png">
+    <title>SGP: Centro de Estudios de Opinion y Analisis</title>
+
+
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    
+    <!-- Custom styles for this template -->
+    <link href="css/signin.css" rel="stylesheet">
+    <link href="css/styles.css" rel="stylesheet">
+  </head>
+    
+<main class="form-signin text-center shadow-lg p-3 mb-5">
+
+  <form  id="formLogin" action="/login" method="POST">
+    <img class="mb-4" src="/img/CEOA.png" alt="" width="100" height="95">
+    <h4>Sistema Gestor de Procesos by CEOA</h4>
+    <br>
+    <div class="form-floating">
+      <input type="text" class="form-control" id="user" name="user" placeholder="User">
+      <label for="user">Usuario</label>
+    </div>
+    <div class="form-floating">
+      <input type="password" class="form-control" id="pass" name="pass" placeholder="Password">
+      <label for="pass">Contraseña</label>
+    </div>
+    <button class="w-100 btn btn-lg btn-primary" type="submit">Iniciar sesión</button>  
+    <br>
+    <br>  
+    <br>  
+    <p style="font-size:13px">© 2023 Universidad Veracruzana. Derechos reservados</p>
+  </form>
+</main>
+
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <% if(alert) { %>
+    <script>
+      Swal.fire({
+        title: '<%= alertTitle %>',
+        text:'<%= alertMessage %>',
+        icon:'<%= alertIcon %>',
+        showConfirmButton: <%= showConfirmButton %>,
+        timer: <%= timer %>
+      }).then(()=>{
+        window.location = '/<%= ruta %>'
+      })
+    </script>
+  <% } %>
+  </body>
+</html>
