@@ -2,6 +2,8 @@ const express = require('express')
 const router = express.Router()
 
 const authController = require('../controllers/authController')
+const accesos = require('../controllers/accesos')
+const gestion = require('../controllers/gestion')
 
 //router para las vistas
 router.get('/', authController.isAuthenticated, (req, res)=>{    
@@ -10,24 +12,30 @@ router.get('/', authController.isAuthenticated, (req, res)=>{
 router.get('/login', (req, res)=>{
     res.render('login', {alert:false})
 })
-router.get('/register', (req, res)=>{
-    res.render('register')
+router.get('/gestion',authController.isAuthenticated,authController.isAdmin, (req, res)=>{
+    res.render('gestion', {alert:false})
 })
-router.get('/accesos', authController.isAuthenticated, (req, res)=>{    
+router.get('/accesos', authController.isAuthenticated, authController.isAdmin, (req, res)=>{    
     res.render('accesos', {user:req.user})
 })
-router.get('/monitoreo', authController.isAuthenticated, (req, res)=>{    
-    res.render('monitoreo', {user:req.user})
-})
-router.get('/gestion', authController.isAuthenticated, (req, res)=>{    
-    res.render('gestion', {user:req.user})
+router.get('/verGrupos', authController.isAuthenticated, authController.isAdmin, (req, res)=>{    
+    res.render('verGrupos', {user:req.user})
 })
 
 
-
-//router para los métodos del controller
-router.post('/register', authController.register)
+//Rutas Auth
 router.post('/login', authController.login)
 router.get('/logout', authController.logout)
+
+//Rutas Accesos
+router.get('/api/accesos/',authController.isAuthenticated,accesos.mostrar)
+router.delete('/api/accesos/:id',authController.isAuthenticated ,accesos.delete)
+router.post('/api/accesos/crear',authController.isAuthenticated ,accesos.crear)
+router.put('/api/accesos/editar/:id',authController.isAuthenticated ,accesos.editar)
+
+//Rutas Grupos
+router.get('/api/grupos/',authController.isAuthenticated,gestion.mostrarGrupos)
+router.post('/api/grupos/crear',authController.isAuthenticated ,gestion.crear)
+
 
 module.exports = router

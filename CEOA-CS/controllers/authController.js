@@ -4,21 +4,6 @@ const conexion = require('../database/db')
 const {promisify} = require('util')
 
 //procedimiento para registrarnos
-exports.register = async (req, res)=>{    
-    try {
-        const email = req.body.email
-        const user = req.body.user
-        const pass = req.body.pass
-        let passHash = await bcryptjs.hash(pass, 8)    
-        //console.log(passHash)   
-        conexion.query('INSERT INTO usuarios SET ?', {nombre_usuario:user, email: email, contraseña:passHash}, (error, results)=>{
-            if(error){console.log(error)}
-            res.redirect('/')
-        })
-    } catch (error) {
-        console.log(error)
-    }       
-}
 
 exports.login = async (req, res)=>{
     try {
@@ -36,8 +21,8 @@ exports.login = async (req, res)=>{
                 ruta: 'login'
             })
         }else{
-            conexion.query('SELECT * FROM usuarios WHERE nombre_usuario = ?', [user], async (error, results)=>{
-                if( results.length == 0 || ! (await bcryptjs.compare(pass, results[0].contraseña)) ){
+            conexion.query('SELECT * FROM users WHERE user_ = ?', [user], async (error, results)=>{
+                if( results.length == 0 || ! (await bcryptjs.compare(pass, results[0].password_)) ){
                     res.render('login', {
                         alert: true,
                         alertTitle: "Error",
@@ -94,6 +79,26 @@ exports.isAuthenticated = async (req, res, next)=>{
         }
     }else{
         res.redirect('/login')        
+    }
+}
+
+exports.isAdmin = async (req, res, next)=>{
+    if (req.cookies.jwt) {
+        try {
+            const decodificada = await promisify(jwt.verify)(req.cookies.jwt, process.env.JWT_SECRETO)
+            conexion.query('SELECT * FROM users WHERE id = ?', [decodificada.id], (error, results)=>{
+                if(!results){return next()}
+                if(results[0].rol_ == 1){
+                    req.user = results[0]
+                    return next()
+                }
+            })
+        } catch (error) {
+            console.log(error)
+            return next()
+        }
+    }else{
+        res.redirect('/')        
     }
 }
 

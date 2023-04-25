@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge"/>
+    <link rel="shortcut icon" href="img/perfil.png" />
+
+
+    <title>SGP: Sistema Gestor de Procesos</title>
+    <!-- Google Fonts -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Barlow">
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet"/>
+    <!-- Google Fonts -->
+    <!-- MDB -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.2.0/mdb.min.css" rel="stylesheet"/>
+    <link href="css/style.css" rel="stylesheet"/>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/alertify.min.css"/>
+    <!-- Default theme -->
+    <link rel="stylesheet" href="css/themes/default.min.css"/>
+</head>
+<body onload="leeselect()">
+    <!--Main Navigation-->
+  <header>
+    <!-- Sidebar -->
+    <nav
+        id="sidebarMenu"
+        class="collapse d-lg-block sidebar collapse bg-white"
+        >
+      <div class="position-sticky">
+        <div class="list-group list-group-flush mx-3 mt-4">
+          <a
+            href="/"
+            class="list-group-item list-group-item-action py-2 ripple"
+            >
+            <i class="fas fa-house fa-fw me-3"></i
+              ><span>Menu principal</span>
+          </a>
+          <a
+            href="/gestion"
+            class="list-group-item list-group-item-action py-2 ripple"
+            ><i class="fas fa-folder-open fa-fw me-3"></i><span>Gestion</span></a
+            >
+          <a
+            href="#"
+            class="list-group-item list-group-item-action py-2 ripple">
+            <i class="fas fa-tv fa-fw me-3"></i>
+            <span>Monitoreo</span></a
+            >
+          <a
+            href="/accesos"
+            class="list-group-item list-group-item-action py-2 ripple"
+            >
+            <i class="fas fa-address-card fa-fw me-3"></i><span>Accesos</span>
+          </a>
+        </div>
+      </div>
+    </nav>
+    <!-- Sidebar -->
+
+    <!-- Navbar -->
+    <nav
+        id="main-navbar"
+        class="navbar navbar-expand-lg navbar-light bg-white fixed-top"
+        >
+      <!-- Container wrapper -->
+      <div class="container-fluid">
+        <!-- Toggle button -->
+        <button
+                class="navbar-toggler"
+                type="button"
+                data-mdb-toggle="collapse"
+                data-mdb-target="#sidebarMenu"
+                aria-controls="sidebarMenu"
+                aria-expanded="false"
+                aria-label="Toggle navigation"
+                >
+          <i class="fas fa-bars"></i>
+        </button>
+
+        <!-- Brand -->
+        <a class="navbar-brand" href="#">
+          <img
+              src="img/logo.png"
+              height="25"
+              alt=""
+              loading="lazy"
+              />
+        </a>
+        <!-- Search form -->
+        <div class="text-center fuenteBarlow " style="font-size: 20px;"> Sistema Gestor de Procesos
+        </div>
+
+        <!-- Right links -->
+        <ul class="navbar-nav ms-auto d-flex flex-row">
+
+          <!-- Avatar -->
+          <li class="nav-item dropdown">
+            <a
+              class="nav-link dropdown-toggle hidden-arrow d-flex align-items-center"
+              href="#"
+              id="navbarDropdownMenuLink"
+              role="button"
+              data-mdb-toggle="dropdown"
+              aria-expanded="false"
+              >
+              <img
+                  src="img/perfil.png"
+                  class="rounded-circle"
+                  height="22"
+                  alt=""
+                  loading="lazy"
+                  />
+            </a>
+            <ul
+                class="dropdown-menu dropdown-menu-end"
+                aria-labelledby="navbarDropdownMenuLink"
+                >
+              <li><a class="dropdown-item" href="#">My profile</a></li>
+              <li><a class="dropdown-item" href="/logout">Logout</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+      <!-- Container wrapper -->
+    </nav>
+    <!-- Navbar -->
+  </header>
+    <!--Main Navigation-->
+    <!--Main layout-->
+    <main style="margin-top: 58px">
+      <div class="container pt-4">
+        <h1 class="centrarTexto"> Proyectos</h1>
+
+        <div>
+            <label>ID:</label>
+            <label style="font-size: 10;" id="idGrupo"></label>
+            <br>
+            <label >Nombre del Grupo:</label>
+            <label id="nombreGrupo"></label>
+        </div>
+
+        <!--Botones-->
+        <div class="pt-2 " >
+            <div class="pt-2">
+                <button id="btnCrear" type="button" class="btn btn-outline-primary" data-mdb-ripple-color="dark" data-mdb-target="#exampleModal" data-mdb-whatever="@mdo" >
+                    Reporte
+                </button>
+                <button id="btnCrear" type="button" class="btn btn-outline-primary" data-mdb-ripple-color="dark" data-mdb-target="#exampleModal" data-mdb-whatever="@mdo" >
+                    Asignar Encuesta
+                </button>
+            </div>
+        </div>
+
+        <!--tablass-->
+        <div class="table-responsive pt-3">
+            <table class="table align-middle table-striped ">
+                <thead>
+                  <tr class="table-success text-center">
+                    <th scope="col">ID</th>
+                    <th scope="col">Nombre proyecto</th>
+                    <th scope="col">Estado</th>
+                    <th scope="col">Etapa</th>
+                    <th scope="col">Total Encuestas</th>
+                    <th scope="col">Fecha Creacion</th>
+                    <th scope="col">Fecha Finalizacion</th>
+                    <th scope="col">Acciones</th>
+                  </tr>
+                </thead>
+                <tbody>
+                    <!--Contenido en Code.js-->
+                </tbody>
+              </table>
+        </div>
+      </div>
+    </main>
+    
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.2.0/mdb.min.js"></script>
+    <script src="js/alertify.min.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="js/verProyectos.js"></script>
+</body>
+
+</html>
+

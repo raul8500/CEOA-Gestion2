@@ -1,131 +1,154 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <!----======== CSS ======== -->
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="icon" href="/img/logo.png">
-    
-    <!----===== Boxicons CSS ===== -->
-    <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
-    
-    <title>SGP: Sistema Gestor de Procesos</title> 
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge"/>
+    <link rel="shortcut icon" href="img/perfil.png" />
+
+
+    <title>SGP: Sistema Gestor de Procesos</title>
+    <!-- Google Fonts -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Barlow">
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet"/>
+    <!-- Google Fonts -->
+    <!-- MDB -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.2.0/mdb.min.css" rel="stylesheet"/>
+    <link href="css/style.css" rel="stylesheet"/>
 </head>
 <body onload="mueveReloj()">
-    <nav class="sidebar close">
-        <header>
-            <div class="image-text">
-                <span class="image">
-                    <img src="/img/logo.png" alt="">
-                </span>
-
-                <div class="text logo-text">
-                    <span class="name">SGP</span>
-                    <span class="profession">Sistema gestor de procesos</span>
-                </div>
-            </div>
-
-            <i class='bx bx-chevron-right toggle'></i>
-        </header>
-
-        <div class="menu-bar">
-            <div class="menu">
-                <ul class="menu-links">
-                    <li class="nav-link">
-                        <a href="/">
-                            <i class='bx bx-home icon' ></i>
-                            <span class="text nav-text">Home</span>
-                        </a>
-                    </li>
-
-                    <li class="nav-link">
-                        <a href="gestion">
-                            <i class='bx bx-archive icon' ></i>
-                            <span class="text nav-text">Gestion</span>
-                        </a>
-                    </li>
-
-                    <li class="nav-link">
-                        <a href="monitoreo">
-                            <i class='bx bx-desktop icon' ></i>
-                            <span class="text nav-text">Monitoreo</span>
-                        </a>
-                    </li>
-
-                    <li class="nav-link">
-                        <a href="accesos">
-                            <i class='bx bx-id-card icon'></i>
-                            <span class="text nav-text">Accesos</span>
-                        </a>
-                    </li>
-                </ul>
-            </div>
-
-            <div class="bottom-content">
-                <li class="">
-                    <a href="logout">
-                        <i class='bx bx-log-out icon' ></i>
-                        <span class="text nav-text">Logout</span>
-                    </a>
-                </li>
-
-                <li class="mode">
-                    <div class="sun-moon">
-                        <i class='bx bx-moon icon moon'></i>
-                        <i class='bx bx-sun icon sun'></i>
-                    </div>
-                    <span class="mode-text text">Dark mode</span>
-
-                    <div class="toggle-switch">
-                        <span class="switch"></span>
-                    </div>
-                </li>
-                
-            </div>
+    <!--Main Navigation-->
+  <header>
+    <!-- Sidebar -->
+    <nav
+        id="sidebarMenu"
+        class="collapse d-lg-block sidebar collapse bg-white"
+        >
+      <div class="position-sticky">
+        <div class="list-group list-group-flush mx-3 mt-4">
+          <a
+            href="/"
+            class="list-group-item list-group-item-action py-2 ripple"
+            >
+            <i class="fas fa-house fa-fw me-3"></i
+              ><span>Menu principal</span>
+          </a>
+          <a
+            href="/gestion"
+            class="list-group-item list-group-item-action py-2 ripple"
+            ><i class="fas fa-folder-open fa-fw me-3"></i><span>Gestion</span></a
+            >
+          <a
+            href="#"
+            class="list-group-item list-group-item-action py-2 ripple">
+            <i class="fas fa-tv fa-fw me-3"></i>
+            <span>Monitoreo</span></a
+            >
+          <a
+            href="/accesos"
+            class="list-group-item list-group-item-action py-2 ripple"
+            >
+            <i class="fas fa-address-card fa-fw me-3"></i><span>Accesos</span>
+          </a>
         </div>
-
+      </div>
     </nav>
+    <!-- Sidebar -->
 
+    <!-- Navbar -->
+    <nav
+        id="main-navbar"
+        class="navbar navbar-expand-lg navbar-light bg-white fixed-top"
+        >
+      <!-- Container wrapper -->
+      <div class="container-fluid">
+        <!-- Toggle button -->
+        <button
+                class="navbar-toggler"
+                type="button"
+                data-mdb-toggle="collapse"
+                data-mdb-target="#sidebarMenu"
+                aria-controls="sidebarMenu"
+                aria-expanded="false"
+                aria-label="Toggle navigation"
+                >
+          <i class="fas fa-bars"></i>
+        </button>
 
-    <section class="home">
-        <header>
-            <img src="/img/barraSup.png" style="margin: auto; padding: 22px 30px 0px 30px; width:1400px">
-            <div class="mode-text text" style="text-align: right; padding: 0px 55px; font-size: 10px; width:1400px">
-                ©Centro de estudios de opinion y analisis
-            </div>
-        </header>
-        <div></div>
-
-        <div class="container text-center" style="padding: 125px 60px;">
-            <div class="row">
-                <div class="row" style="text-align: center; height: 160px;" >
-                    <img src="/img/CEOA2.png" width="165px" height="175px">
-                </div>
-
-              <div class="col-8" style="text-align: center;height: 225px;">
-
-                <form name="" style="margin:auto; height: 70px;">
-                    <h3 style="font-size : 12pt; font-weight: bold; text-align : center;" class="mode-text text">Centro de estudios de <br> opinion y analisis </h3>
-                </form>
-                
-                <form name="form_fecha" style="margin:auto; height: 20px;">
-                    <input class="mode-text text" type="text" name="fecha" size="30" style="border-color: transparent ;background-color : transparent; font-family : Verdana, Arial, Helvetica; font-size : 15pt; text-align : center;" onfocus="window.document.form_fecha.fecha.blur()">
-                </form>
-                <form name="form_reloj" style="margin:auto;height: 45px;">
-                    <input class="mode-text text" type="text" name="reloj" size="10" style="border-color: transparent;background-color : transparent; font-family : Verdana, Arial, Helvetica; font-size : 45pt; text-align : center;" onfocus="window.document.form_reloj.reloj.blur()">
-                </form>
-              </div>
-            </div>
+        <!-- Brand -->
+        <a class="navbar-brand" href="#">
+          <img
+              src="img/logo.png"
+              height="25"
+              alt=""
+              loading="lazy"
+              />
+        </a>
+        <!-- Search form -->
+        <div class="text-center fuenteBarlow " style="font-size: 20px;"> Sistema Gestor de Procesos
         </div>
 
-        <div class="container text-center" style="padding: 12px 60px;">
-            
-        </div>
-    </section>
+        <!-- Right links -->
+        <ul class="navbar-nav ms-auto d-flex flex-row">
 
-    <script src="js/script.js"></script>
+          <!-- Avatar -->
+          <li class="nav-item dropdown">
+            <a
+              class="nav-link dropdown-toggle hidden-arrow d-flex align-items-center"
+              href="#"
+              id="navbarDropdownMenuLink"
+              role="button"
+              data-mdb-toggle="dropdown"
+              aria-expanded="false"
+              >
+              <img
+                  src="img/perfil.png"
+                  class="rounded-circle"
+                  height="22"
+                  alt=""
+                  loading="lazy"
+                  />
+            </a>
+            <ul
+                class="dropdown-menu dropdown-menu-end"
+                aria-labelledby="navbarDropdownMenuLink"
+                >
+              <li><a class="dropdown-item" href="#">My profile</a></li>
+              <li><a class="dropdown-item" href="/logout">Logout</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+      <!-- Container wrapper -->
+    </nav>
+    <!-- Navbar -->
+  </header>
+    <!--Main Navigation-->
+    <!--Main layout-->
+    <main style="margin-top: 58px">
+      <div class="container pt-1">
+        <div class="centrar" >
+          <div>
+            <img style="height: 10%; width: 10%;" src="img/CEOA2.png">
+          </div>
+
+          <form >
+            <h3 style="font-size : 12pt; font-weight: bold; text-align : center;" class="mode-text text">Centro de estudios de <br> opinion y analisis </h3>
+          </form>
+          
+          <form name="form_fecha">
+            <input class="textFecha" type="text" name="fecha" size="25" onfocus="window.document.form_fecha.fecha.blur()">
+          </form>
+      
+          <form name="form_reloj" style="margin-top: -20px; margin-bottom: 10%;">
+            <input  class="textReloj"  type="text" name="reloj" size="10" onfocus="window.document.form_reloj.reloj.blur()">
+          </form>
+        </div>
+      </div>
+    </main>
+    
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.2.0/mdb.min.js"></script>
+    <script type="text/javascript" src="js/reloj.js"></script>
 </body>
 </html>
