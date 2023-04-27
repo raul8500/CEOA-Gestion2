@@ -21,6 +21,9 @@ router.get('/accesos', authController.isAuthenticated, authController.isAdmin, (
 router.get('/verGrupos', authController.isAuthenticated, authController.isAdmin, (req, res)=>{    
     res.render('verGrupos', {user:req.user})
 })
+router.get('/perfil', authController.isAuthenticated, authController.isAdmin, (req, res)=>{    
+    res.render('perfil', {user:req.user})
+})
 
 
 //Rutas Auth
