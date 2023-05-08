@@ -43,6 +43,8 @@ router.post('/api/grupos/crear',authController.isAuthenticated ,gestion.crear)
 
 //Rutas Perfil
 router.get('/api/perfil/',authController.isAuthenticated,perfil.mostrar)
+router.put('/api/perfil/actualizar/',authController.isAuthenticated,perfil.editar)
+router.put('/api/perfil/actualizarPass/',authController.isAuthenticated,perfil.password)
 
 
 module.exports = router

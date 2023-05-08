@@ -64,13 +64,7 @@ fetch(url)
     .then( response => response.json() )
     .then( data => mostrar(data) )
     .catch( error => console.log(error))
-
-  
-const on = (element, event, selector, handler) => {
-    //console.log(element)
-    //console.log(event)
-    //console.log(selector)
-    //console.log(handler)
+    const on = (element, event, selector, handler) => {
     element.addEventListener(event, e => {
         if(e.target.closest(selector)){
             handler(e)
@@ -127,7 +121,6 @@ on(document, 'click', '.btnBorrar', async e => {
 
 //Procedimiento Editar
 let idForm = 0
-
 on(document, 'click', '.btnEditar', e => {    
     const fila = e.target.parentNode.parentNode
     idForm = fila.children[0].innerHTML
@@ -221,7 +214,6 @@ formArticulo.addEventListener('submit', (e)=>{
                 })
             })
             .then( response => response.json() )
-            .then( response => location.reload() )
 
             Swal.fire({
             icon: 'success',
@@ -229,6 +221,10 @@ formArticulo.addEventListener('submit', (e)=>{
             showConfirmButton: false,
             timer: 1500
             })
+
+            setTimeout(function() {
+                location.reload()
+              }, 2000);
 
         }
         modal.hide()
