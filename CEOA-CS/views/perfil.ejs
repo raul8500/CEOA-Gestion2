@@ -128,7 +128,7 @@
     <!--Main layout-->
     <main style="margin-top: 58px">
         <div class="container pt-4">
-            <h1 class="centrarTexto"> Perfil </h1>
+            <h1  class="centrarTexto mb-5"> Perfil de Usuario </h1>
 
             <div style="padding-left: 15%; padding-right: 15%;">
                 <h4 class="mb-3">Informacion Personal</h4>
@@ -177,7 +177,7 @@
                     </div>
                 </div>
                 </form>
-                <button class="btn btn-secondary btn-lg" >Cambiar Contraseña</button>
+                <button class="btn btn-secondary btn-lg id="btnCrear" type="button" data-mdb-ripple-color="dark" data-mdb-toggle="modal" data-mdb-target="#exampleModal" data-mdb-whatever="@mdo" " >Cambiar Contraseña</button>
                 <hr class="my-4">
                 <button class="w-100 btn btn-primary btn-lg" >Actualizar informacion</button>
             </div>
@@ -186,10 +186,86 @@
         <footer class="my-5 pt-5 text-body-secondary text-center text-small">
             <p class="mb-1">&copy; 2023-2024 CEOA</p> 
         
-        </footer>        
+        </footer>
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">Cambiar contraseña</h5>
+                  <button type="button" class="btn-close" data-mdb-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                  <form>
+                    <div class="mb-1">
+                        <label for="recipient-name" class="col-form-label">La contraseña debe contener al menos una mayuscula, un numero y un caracter especial.</label>
+                    </div>
+                    <div class="mb-3">
+                      <label for="recipient-name" class="col-form-label">Nueva Contraseña:</label>
+                      <div class="row">
+                        <div class="col-6">
+                          <div class="input-group d-flex">
+                            <span
+                              class="input-group-text border-0"
+                              id="password"
+                              >
+                              <i class="fas fa-lock fa-2x me-1"></i>
+                          </span>
+                            <input
+                              type="password"
+                              class="form-control rounded mt-1"
+                              placeholder="Contraseña"
+                              aria-label="password"
+                              aria-describedby="password"
+                              id="password-input"
+                            />
+                            <div class="valid-feedback">Correcta</div>
+                            <div class="invalid-feedback">Incorrecta</div>
+                          </div>
+                        </div>
+                      
+                        <div class="col-6 mt-4 mt-xxl-0 w-auto h-auto">
+                      
+                          <div
+                            class="alert px-4 py-3 mb-0 d-none"
+                            role="alert"
+                            data-mdb-color="warning"
+                            id="password-alert"
+                            >
+                            <ul class="list-unstyled mb-0">
+                              <li class="requirements leng">
+                                <i class="fas fa-check text-success me-2"></i>
+                                <i class="fas fa-times text-danger me-3"></i>
+                                Tu contraseña debe tener al menos 8 caracteres.</li>
+                              <li class="requirements big-letter">
+                                <i class="fas fa-check text-success me-2"></i>
+                                <i class="fas fa-times text-danger me-3"></i>
+                                Al menos 1 mayuscula.</li>
+                              <li class="requirements num">
+                                <i class="fas fa-check text-success me-2"></i>
+                                <i class="fas fa-times text-danger me-3"></i>
+                                Al menos 1 numero.</li>
+                              <li class="requirements special-char">
+                                <i class="fas fa-check text-success me-2"></i>
+                                <i class="fas fa-times text-danger me-3"></i>
+                                Al menos 1 caracter especial.</li>
+                            </ul>
+                          </div>
+                      
+                        </div>
+                      </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-mdb-dismiss="modal">Cerrar</button>
+                        <button type="submit" class="btn btn-primary">Guardar</button>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+        </div>
     </main>
     
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.2.0/mdb.min.js"></script>
-    <script type="text/javascript" src="js/reloj.js"></script>
+    <script type="text/javascript" src="js/password.js"></script>
 </body>
 </html>
