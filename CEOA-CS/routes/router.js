@@ -4,6 +4,7 @@ const router = express.Router()
 const authController = require('../controllers/authController')
 const accesos = require('../controllers/accesos')
 const gestion = require('../controllers/gestion')
+const perfil = require('../controllers/perfil')
 
 //router para las vistas
 router.get('/', authController.isAuthenticated, (req, res)=>{    
@@ -39,6 +40,9 @@ router.put('/api/accesos/editar/:id',authController.isAuthenticated ,accesos.edi
 //Rutas Grupos
 router.get('/api/grupos/',authController.isAuthenticated,gestion.mostrarGrupos)
 router.post('/api/grupos/crear',authController.isAuthenticated ,gestion.crear)
+
+//Rutas Perfil
+router.get('/api/perfil/',authController.isAuthenticated,perfil.mostrar)
 
 
 module.exports = router
