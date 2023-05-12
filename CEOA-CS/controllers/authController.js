@@ -106,3 +106,21 @@ exports.logout = (req, res)=>{
     res.clearCookie('jwt')   
     return res.redirect('/')
 }
+
+
+exports.verificaToken = (req, res, next)=> {
+    const token = req.cookies.jwt
+    try {
+        const decoded = jwt.verify(token, process.env.JWT_SECRETO);
+        return next()
+      } catch (err) {
+        if (err.name === 'TokenExpiredError') {
+          // token expirado
+          res.redirect('/login') 
+          console.log('Token expired');
+        } else {
+          // otro tipo de error
+          console.error(err);
+        }
+      }
+}

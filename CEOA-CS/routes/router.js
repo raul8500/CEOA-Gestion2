@@ -1,13 +1,15 @@
 const express = require('express')
 const router = express.Router()
-
 const authController = require('../controllers/authController')
 const accesos = require('../controllers/accesos')
 const gestion = require('../controllers/gestion')
 const perfil = require('../controllers/perfil')
+const limeAuth = require('../controllers/controllersLimeSurvey/limeSurveyAuth')
+const limeAuthClose = require('../controllers/controllersLimeSurvey/limeAuthClose')
+
 
 //router para las vistas
-router.get('/', authController.isAuthenticated, (req, res)=>{    
+router.get('/', authController.isAuthenticated, authController.verificaToken, (req, res)=>{    
     res.render('Main', {user:req.user})
 })
 router.get('/login', (req, res)=>{
@@ -26,6 +28,10 @@ router.get('/perfil', authController.isAuthenticated, authController.isAdmin, (r
     res.render('perfil', {user:req.user})
 })
 
+
+//Rutas Auth Lime
+router.get('/api/lime',authController.isAuthenticated,limeAuth.ayuda)
+router.get('/api/lime/cerrar',authController.isAuthenticated, limeAuthClose.cerrar)
 
 //Rutas Auth
 router.post('/login', authController.login)

@@ -50,8 +50,6 @@ const mostrar = (grupos) => {
                             <td class="text-center">${dateF}</td>
                             <td class="text-center">
                                 <a class="verGrupos btn btn-primary">Ver</a>
-                                <a class="btnEditar btn btn-secondary">Editar</a>
-                                <a class="btnAsignar btn btn-info ">Asignar</a>
                             </td>
                        </tr>
                     `
