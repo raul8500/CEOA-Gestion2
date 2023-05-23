@@ -2,6 +2,11 @@ const jwt = require('jsonwebtoken')
 const bcryptjs = require('bcryptjs')
 const conexion = require('../database/db')
 const {promisify} = require('util')
+const fs = require('fs');
+
+let usuario = ''
+let jwtoke = ''
+let limetoken = ''
 
 //Para cerrar la sesion de lime
 const request = require('request');
@@ -24,110 +29,105 @@ const options = {
 var SESSIONKEY = "";
 var externalSessionKey = null;
 var optionsLogin = {
-    url: 'https://raul.limesurvey.net/admin/remotecontrol',
-    method: "POST",
-    headers: {
-      'user-agent': 'Apache-HttpClient/4.2.2 (java 1.5)',
-      'host': 'raul.limesurvey.net',
-      'path': '/index.php/admin/remotecontrol',
-      'connection': 'keep-alive',
-      'content-type': 'application/json'
-    }
+  url: 'https://raul.limesurvey.net/admin/remotecontrol',
+  method: "POST",
+  headers: {
+    'user-agent': 'Apache-HttpClient/4.2.2 (java 1.5)',
+    'host': 'raul.limesurvey.net',
+    'path': '/index.php/admin/remotecontrol',
+    'connection': 'keep-alive',
+    'content-type': 'application/json'
+  }
 };
 
-
-optionsLogin.body = JSON.stringify({method:'get_session_key',params:['raulperestu','Raulxt914'],id:1});
 function getSessionKey(callback) {
-    request(optionsLogin, function(error, response, body){
-      if (!error && response.statusCode == 200) {
-        body = JSON.parse(body);
-  
-        //*********KEEP THE KEY*********  
-        if(SESSIONKEY === "") {
-          //console.log("NEW KEY -->" + body.result);
-          SESSIONKEY = body.result;
-          callback(SESSIONKEY);
-        } 
-      }
-      else {
-        console.log("ERROR -->" + body); 
-        callback(null);
-      }
-    });
-  }
+  optionsLogin.body = JSON.stringify({ method: 'get_session_key', params: ['raulperestu', 'Raulxt914'], id: 1 });
 
-exports.login = async (req, res)=>{
-  getSessionKey(function(sessionKey) {
-    if (sessionKey !== null) {
-      externalSessionKey = sessionKey;
-
-      try {
-        const user = req.body.user;
-        const pass = req.body.pass;
-
-        if(!user || !pass ){
-          res.render('login',{
-            alert:true,
-            alertTitle: "Advertencia",
-            alertMessage: "Ingrese un usuario y contraseña",
-            alertIcon:'info',
-            showConfirmButton: true,
-            timer: false,
-            ruta: 'login'
-          });
-        }else{
-          conexion.query('SELECT * FROM users WHERE user_ = ?', [user], async (error, results)=>{
-            if( results.length == 0 || ! (await bcryptjs.compare(pass, results[0].password_)) ){
-              res.render('login', {
-                alert: true,
-                alertTitle: "Error",
-                alertMessage: "Usuario y/o contraseña incorrectos",
-                alertIcon:'error',
-                showConfirmButton: true,
-                timer: false,
-                ruta: 'login'    
-              });
-            }else{
-              const id = results[0].id;
-              const token = jwt.sign({id:id}, process.env.JWT_SECRETO, {
-                expiresIn: process.env.JWT_TIEMPO_EXPIRA
-              });
-
-              const cookiesOptions = {
-                expires: new Date(Date.now()+process.env.JWT_COOKIE_EXPIRES * 24 * 60 * 60 * 1000),
-                httpOnly: true
-              };
-
-              res.cookie('jwt', token, cookiesOptions);
-
-              if (externalSessionKey !== null) {
-                res.cookie('ss', externalSessionKey, cookiesOptions);
-              }
-
-              res.render('login', {
-                alert: true,
-                alertTitle: "Conexión exitosa",
-                alertMessage: "¡LOGIN CORRECTO!",
-                alertIcon:'success',
-                showConfirmButton: false,
-                timer: 800,
-                ruta: ''
-              });
-
-              console.log('Usuario: '+ user);
-              console.log('JWTOKEN: ' + token);
-              console.log('LimeToken: ' + externalSessionKey);
-            }
-          });
-        }
-      } catch (error) {
-        console.log(error);
-      }
+  request(optionsLogin, function(error, response, body) {
+    if (!error && response.statusCode == 200) {
+      body = JSON.parse(body);
+      callback(body.result);
     } else {
-      console.log("No se pudo obtener el SESSIONKEY");
+      console.log("ERROR -->" + body);
+      callback(null);
     }
   });
+}
+
+exports.login = async (req, res) => {
+  try {
+    const user = req.body.user;
+    const pass = req.body.pass;
+
+    if (!user || !pass) {
+      return res.render('login', {
+        alert: true,
+        alertTitle: "Advertencia",
+        alertMessage: "Ingrese un usuario y contraseña",
+        alertIcon: 'info',
+        showConfirmButton: true,
+        timer: false,
+        ruta: 'login'
+      });
+    }
+
+    const results = await new Promise((resolve, reject) => {
+      conexion.query('SELECT * FROM users WHERE user_ = ?', [user], (error, results) => {
+        if (error) {
+          reject(error);
+        } else {
+          resolve(results);
+        }
+      });
+    });
+
+    if (results.length === 0 || !(await bcryptjs.compare(pass, results[0].password_))) {
+      return res.render('login', {
+        alert: true,
+        alertTitle: "Error",
+        alertMessage: "Usuario y/o contraseña incorrectos",
+        alertIcon: 'error',
+        showConfirmButton: true,
+        timer: false,
+        ruta: 'login'
+      });
+    }
+
+    const id = results[0].id;
+    const token = jwt.sign({ id: id }, process.env.JWT_SECRETO, {
+      expiresIn: process.env.JWT_TIEMPO_EXPIRA
+    });
+
+    const cookiesOptions = {
+      expires: new Date(Date.now() + process.env.JWT_COOKIE_EXPIRES * 24 * 60 * 60 * 1000),
+      httpOnly: true
+    };
+
+    res.cookie('jwt', token, cookiesOptions);
+
+    getSessionKey(function (sessionKey) {
+      if (sessionKey !== null) {
+        res.cookie('ss', sessionKey, cookiesOptions);
+      }
+
+      res.render('login', {
+        alert: true,
+        alertTitle: "Conexión exitosa",
+        alertMessage: "¡LOGIN CORRECTO!",
+        alertIcon: 'success',
+        showConfirmButton: false,
+        timer: 800,
+        ruta: ''
+      });
+
+      const fechaActual = new Date();
+      guardarLog(user, fechaActual,token,sessionKey)
+    });
+  } catch (error) {
+    console.log(error);
+  }
 };
+
 
 exports.isAuthenticated = async (req, res, next)=>{
     if (req.cookies.jwt) {
@@ -201,3 +201,20 @@ exports.verificaToken = (req, res, next)=> {
         }
       }
 }
+
+
+function guardarLog(usuario, fecha,token,sessionKey) {
+  const logEntry = `========================\n${fecha}\nUsuario: ${usuario} inició sesión\nLimeToken: ${sessionKey}\nJWToken: ${token}\n========================\n`;
+  const filePath = './logs/log.txt';
+
+  fs.appendFile(filePath, logEntry, (err) => {
+    if (err) {
+      console.error('Error al guardar el registro de inicio de sesión:', err);
+    } else {
+      console.log('Registro de inicio de sesión guardado exitosamente.');
+    }
+  });
+}
+
+
+

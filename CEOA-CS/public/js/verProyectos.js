@@ -7,6 +7,10 @@ const idGrupo = document.getElementById('idGrupo')
 const nombreGrupo = document.getElementById('nombreGrupo')
 let resultados = ''
 
+const formArticulo = document.getElementById('hola')
+const myModalEl = document.getElementById('exampleModal')
+const modal = new mdb.Modal(myModalEl)
+
 
 function leeselect(){
     const id = localStorage.getItem("id")
@@ -14,10 +18,6 @@ function leeselect(){
     idGrupo.innerHTML = id
     nombreGrupo.innerHTML = grupo
 }
-
-const formArticulo = document.getElementById('hola')
-const myModalEl = document.getElementById('exampleModal')
-const modal = new mdb.Modal(myModalEl)
 
 
 btnAsignar.addEventListener('click', ()=>{

@@ -1,0 +1,18 @@
+========================
+Tue May 23 2023 12:07:39 GMT-0600 (hora estándar central)
+Usuario: rperedo inició sesión
+LimeToken: u0duBL6GiFtbeNsVkiiNXOxhTYNyJlhE
+JWToken: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTksImlhdCI6MTY4NDg2NTI1OSwiZXhwIjoxNjg0ODY2MTU5fQ.LS_TA42A4RmcOmlr__KXmBER2_v6zj83EaLxNCR48vc
+========================
+========================
+Tue May 23 2023 12:08:51 GMT-0600 (hora estándar central)
+Usuario: rperedo inició sesión
+LimeToken: 9VN1GZFo2n9H5oUXQy~30Fqzge3JmssD
+JWToken: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTksImlhdCI6MTY4NDg2NTMzMCwiZXhwIjoxNjg0ODY2MjMwfQ.3oKHID7qeIMn5ytlssi3QlfAWOR8ujGRANoyyfRB034
+========================
+========================
+Tue May 23 2023 12:09:41 GMT-0600 (hora estándar central)
+Usuario: enegrete inició sesión
+LimeToken: bXAaGD622bxFGq0eHB9GK1jzyTPzbmpS
+JWToken: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjMsImlhdCI6MTY4NDg2NTM4MSwiZXhwIjoxNjg0ODY2MjgxfQ.6S4IF-yhKUviZtrAKBFrmLSwl9ABXlvi4kUp_--2OkM
+========================
