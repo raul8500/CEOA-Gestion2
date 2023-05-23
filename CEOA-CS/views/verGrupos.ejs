@@ -146,10 +146,10 @@
         <!--Botones-->
         <div class="pt-2 " >
             <div class="pt-2">
-                <button id="btnCrear" type="button" class="btn btn-outline-primary" data-mdb-ripple-color="dark" data-mdb-target="#exampleModal" data-mdb-whatever="@mdo" >
+                <button id="btnReporye" type="button" class="btn btn-outline-primary" data-mdb-ripple-color="dark" data-mdb-target="#exampleModal" data-mdb-whatever="@mdo" >
                     Reporte
                 </button>
-                <button id="btnCrear" type="button" class="btn btn-outline-primary" data-mdb-ripple-color="dark" data-mdb-target="#exampleModal" data-mdb-whatever="@mdo" >
+                <button id="btnAsignar" type="button" class="btn btn-outline-primary" data-mdb-ripple-color="dark" data-mdb-toggle="modal" data-mdb-target="#exampleModal" data-mdb-whatever="@mdo" >
                     Asignar Encuesta
                 </button>
             </div>
@@ -175,6 +175,49 @@
                 </tbody>
               </table>
         </div>
+
+        <!--Modal-->
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Encuestas LimeSurvey</h5>
+                <button type="button" class="btn-close" data-mdb-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                <form>
+
+                  <div class="mb-3">
+                    <label for="recipient-name" class="col-form-label">Lista de encuestas en el sistema de LimeSurvey:</label>
+                  </div>
+
+                  <div class="table-responsive pt-3">
+                    <table id="hola" class="table align-middle table-striped ">
+                        <thead>
+                          <tr class="table-success text-center">
+                            <th scope="col">Selección</th>
+                            <th scope="col">ID</th>
+                            <th scope="col">Nombre proyecto</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                            <!--Contenido en Code.js-->
+                        </tbody>
+                      </table>
+                </div>
+
+                  <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-mdb-dismiss="modal">Cerrar</button>
+                      <button type="submit" class="btn btn-primary">Asignar</button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+
       </div>
     </main>
     
