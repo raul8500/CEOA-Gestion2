@@ -31,6 +31,8 @@ router.get('/perfil', authController.isAuthenticated, authController.isAdmin, (r
 
 //Rutas lime
 router.get('/api/lime/encuestas',lime.encuestas )
+router. post('/api/lime/guardarGrupos', lime.asignarEncuestas)
+
 
 //Rutas Auth
 router.post('/login',authController.login)

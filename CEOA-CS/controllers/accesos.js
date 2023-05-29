@@ -1,7 +1,6 @@
 const conexion = require('../database/db')
 const bcryptjs = require('bcryptjs')
 
-
 //Mostrar
 exports.mostrar = async (req, res)=>{    
     try {
@@ -64,6 +63,4 @@ exports.editar = async (req, res)=>{
         }
     })
 }
-
-
 

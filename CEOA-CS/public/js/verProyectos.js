@@ -1,63 +1,101 @@
+// Definición de variables
+const url = 'http://localhost:8081/api/grupos/';
+const urlLIME = 'http://localhost:8081/api/lime/encuestas';
 
-//Definición de variables
-const url = 'http://localhost:8081/api/grupos/'
-const urlLIME = 'http://localhost:8081/api/lime/encuestas'
-const contenedor = document.querySelector('tbody')
-const idGrupo = document.getElementById('idGrupo')
-const nombreGrupo = document.getElementById('nombreGrupo')
-let resultados = ''
+const url3 = 'http://localhost:8081/api/lime/guardarGrupos'
 
-const formArticulo = document.getElementById('hola')
-const myModalEl = document.getElementById('exampleModal')
-const modal = new mdb.Modal(myModalEl)
+const contenedor = document.querySelector('tbody');
+const idGrupo = document.getElementById('idGrupo');
+const nombreGrupo = document.getElementById('nombreGrupo');
+let resultados = '';
 
+const formArticulo = document.getElementById('hola');
+const myModalEl = document.getElementById('exampleModal');
+const modal = new mdb.Modal(myModalEl);
 
-function leeselect(){
-    const id = localStorage.getItem("id")
-    const grupo = localStorage.getItem("grupo")
-    idGrupo.innerHTML = id
-    nombreGrupo.innerHTML = grupo
+function leeselect() {
+  const id = localStorage.getItem('id');
+  const grupo = localStorage.getItem('grupo');
+  idGrupo.innerHTML = id;
+  nombreGrupo.innerHTML = grupo;
+}
+
+btnAsignarModal.addEventListener('click', () => {
+  const checkboxes = document.querySelectorAll('.check');
+  const selectedEncuestas = [];
+
+  checkboxes.forEach(function(checkbox) {
+    if (checkbox.checked) {
+      const sid = checkbox.parentNode.nextElementSibling.textContent;
+      selectedEncuestas.push({ sid });
+    }
+  });
+
+  if (selectedEncuestas.length > 0) {
+    guardarIDs(selectedEncuestas);
+  }
+});
+
+// Función para mostrar los resultados
+const mostrar = (encuestas) => {
+  encuestas.forEach((encuesta) => {
+    const { sid, surveyls_title } = encuesta;
+    resultados += `
+      <tr>
+        <td class="text-center">
+          <input class="check form-check-input" type="checkbox" value=""/>
+        </td>
+        <td class="text-center">${sid}</td>
+        <td class="text-center">${surveyls_title}</td>
+      </tr>`;
+  });
+  formArticulo.innerHTML = resultados;
+};
+
+// Procedimiento Mostrar
+fetch(urlLIME)
+  .then((response) => response.json())
+  .then((data) => {
+    mostrar(data);
+  })
+  .catch((error) => console.log(error));
+
+// Utilidad para delegar eventos
+const on = (element, event, selector, handler) => {
+  element.addEventListener(event, (e) => {
+    if (e.target.closest(selector)) {
+      handler(e);
+    }
+  });
+};
+
+function showDetails(e) {
+  e.preventDefault();
+  const documento = e.target.parentNode.parentNode.children[1].textContent;
+  console.log(documento);
+}
+
+function guardarIDs(selectedEncuestas) {
+  fetch(url3, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(selectedEncuestas), // Convertir el objeto a JSON
+  })
+    .then((response) => response.json())
+    .then((data) => {
+      console.log('jalo')
+    })
+    .catch((error) => console.log(error));
 }
 
 
 btnAsignar.addEventListener('click', ()=>{
-    const checkboxes = document.querySelectorAll('.check');
+  const checkboxes = document.querySelectorAll('.check');
 
-  // Asignar valor a los checkboxes
-   checkboxes.forEach(function(checkbox) {
-    checkbox.checked = false; // true para marcar el checkbox, false para desmarcarlo
-   });
+// Asignar valor a los checkboxes
+ checkboxes.forEach(function(checkbox) {
+ checkbox.checked = false; // true para marcar el checkbox, false para desmarcarlo
+ });
 })
-
-
-//funcion para mostrar los resultados
-
-const mostrar = (encuestas) => {
-    encuestas.result.forEach(encuesta => {
-      resultados += `<tr>
-        <td class="text-center"> <input class="check form-check-input" type="checkbox" value=""/></td>
-        <td class="text-center">${encuesta.sid}</td>
-        <td class="text-center">${encuesta.surveyls_title}</td>
-      </tr>`;
-    });
-    formArticulo.innerHTML = resultados;
-  };
-
-//Procedimiento Mostrar
-fetch(urlLIME)
-    .then( response => response.json() )
-    .then( data => mostrar(data) )
-    .catch( error => console.log(error))
-    const on = (element, event, selector, handler) => {
-    element.addEventListener(event, e => {
-        if(e.target.closest(selector)){
-            handler(e)
-        }
-    })
-} 
-
-function showDetails(e){
-    e.preventDefault();
-    const documento = e.target.parentNode.parentNode.children[1].textContent;
-    console.log(documento)
-}

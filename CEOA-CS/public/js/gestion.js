@@ -1,6 +1,7 @@
 
 //Definición de variables
 const url = 'http://localhost:8081/api/grupos/'
+const url2 = 'http://localhost:8081/api/grupos/'
 const contenedor = document.querySelector('tbody')
 let resultados = ''
 
@@ -75,7 +76,7 @@ fetch(url)
         })
     } 
 
-function showDetails(e){
+    function showDetails(e){
     e.preventDefault();
     const documento = e.target.parentNode.parentNode.children[1].textContent;
     console.log(documento)
