@@ -157,20 +157,18 @@
 
         <!--tablass-->
         <div class="table-responsive pt-3">
-            <table class="table align-middle table-striped ">
+            <table id="tablaBien"  class="table align-middle table-striped ">
                 <thead>
                   <tr class="table-success text-center">
                     <th scope="col">ID</th>
                     <th scope="col">Nombre proyecto</th>
                     <th scope="col">Estado</th>
-                    <th scope="col">Etapa</th>
-                    <th scope="col">Total Encuestas</th>
-                    <th scope="col">Fecha Creacion</th>
-                    <th scope="col">Fecha Finalizacion</th>
+                    <th scope="col">Fecha Inicio</th>
+                    <th scope="col">Fecha Termino</th>
                     <th scope="col">Acciones</th>
                   </tr>
                 </thead>
-                <tbody>
+                <tbody id="tbody1">
                     <!--Contenido en Code.js-->
                 </tbody>
               </table>
@@ -191,27 +189,29 @@
                     <label for="recipient-name" class="col-form-label">Lista de encuestas en el sistema de LimeSurvey:</label>
                   </div>
 
+                
+                  
                   <div class="table-responsive pt-3">
                     <table id="hola" class="table align-middle table-striped ">
                         <thead>
                           <tr class="table-success text-center">
                             <th scope="col">Selección</th>
-                            <th scope="col">ID</th>
-                            <th scope="col">Nombre proyecto</th>
+                            <th class="sid" scope="col">ID</th>
+                            <th class="nombreGrupo" scope="col">Nombre proyecto</th>
                           </tr>
                         </thead>
-                        <tbody>
-                            <!--Contenido en Code.js-->
+                        <tbody id="tbodyModal">
+                            
                         </tbody>
                       </table>
-                </div>
+                  </div> 
 
-                </form>
-                
                 <div class="modal-footer">
                   <button id="btnCancelarModal" type="button" class="btn btn-secondary" data-mdb-dismiss="modal">Cerrar</button>
                   <button id="btnAsignarModal" type="submit" class="btn btn-primary">Asignar</button>
-              </div>
+                </div>
+
+                </form>
               </div>
             </div>
           </div>

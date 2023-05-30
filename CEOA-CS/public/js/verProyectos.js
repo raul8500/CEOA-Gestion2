@@ -1,40 +1,24 @@
 // Definición de variables
-const url = 'http://localhost:8081/api/grupos/';
+const url = 'http://localhost:8081/api/lime/encuestasTablas';
 const urlLIME = 'http://localhost:8081/api/lime/encuestas';
-
 const url3 = 'http://localhost:8081/api/lime/guardarGrupos'
 
 const contenedor = document.querySelector('tbody');
 const idGrupo = document.getElementById('idGrupo');
 const nombreGrupo = document.getElementById('nombreGrupo');
-let resultados = '';
+const formArticulo = document.getElementById('tbodyModal');
 
-const formArticulo = document.getElementById('hola');
+
+const formTablaBien = document.getElementById('tbody1')
 const myModalEl = document.getElementById('exampleModal');
 const modal = new mdb.Modal(myModalEl);
+let resultados = '';
+let resultados2 = '';
+let ayuda = ''
 
-function leeselect() {
-  const id = localStorage.getItem('id');
-  const grupo = localStorage.getItem('grupo');
-  idGrupo.innerHTML = id;
-  nombreGrupo.innerHTML = grupo;
-}
+const id2 = localStorage.getItem('id');
 
-btnAsignarModal.addEventListener('click', () => {
-  const checkboxes = document.querySelectorAll('.check');
-  const selectedEncuestas = [];
 
-  checkboxes.forEach(function(checkbox) {
-    if (checkbox.checked) {
-      const sid = checkbox.parentNode.nextElementSibling.textContent;
-      selectedEncuestas.push({ sid });
-    }
-  });
-
-  if (selectedEncuestas.length > 0) {
-    guardarIDs(selectedEncuestas);
-  }
-});
 
 // Función para mostrar los resultados
 const mostrar = (encuestas) => {
@@ -53,6 +37,7 @@ const mostrar = (encuestas) => {
 };
 
 // Procedimiento Mostrar
+
 fetch(urlLIME)
   .then((response) => response.json())
   .then((data) => {
@@ -75,6 +60,41 @@ function showDetails(e) {
   console.log(documento);
 }
 
+function leeselect() {
+  const id = localStorage.getItem('id');
+  const grupo = localStorage.getItem('grupo');
+  idGrupo.innerHTML = id;
+  nombreGrupo.innerHTML = grupo;
+}
+
+btnAsignarModal.addEventListener('click', () => {
+  const checkboxes = document.querySelectorAll('.check');
+  const selectedEncuestas = [];
+  const id = localStorage.getItem('id');
+  selectedEncuestas.push({ id });
+
+  checkboxes.forEach(function(checkbox) {
+    if (checkbox.checked) {
+      const sid = checkbox.parentNode.nextElementSibling.textContent;
+      const nombre = checkbox.parentNode.nextElementSibling.nextElementSibling.textContent;
+      selectedEncuestas.push({ sid,nombre });
+    }
+  });
+
+  if (selectedEncuestas.length > 0) {
+    guardarIDs(selectedEncuestas);
+  }
+});
+
+btnAsignar.addEventListener('click', ()=>{
+  const checkboxes = document.querySelectorAll('.check');
+
+// Asignar valor a los checkboxes
+ checkboxes.forEach(function(checkbox) {
+ checkbox.checked = false; // true para marcar el checkbox, false para desmarcarlo
+ });
+})
+
 function guardarIDs(selectedEncuestas) {
   fetch(url3, {
     method: 'POST',
@@ -91,11 +111,33 @@ function guardarIDs(selectedEncuestas) {
 }
 
 
-btnAsignar.addEventListener('click', ()=>{
-  const checkboxes = document.querySelectorAll('.check');
+fetch(url+'/'+id2)
+  .then((response) => response.json())
+  .then((data) => {
+    mostrar2(data);
+  })
+  .catch((error) => console.log(error));
 
-// Asignar valor a los checkboxes
- checkboxes.forEach(function(checkbox) {
- checkbox.checked = false; // true para marcar el checkbox, false para desmarcarlo
- });
-})
+const mostrar2 = (encuestas) => {
+    encuestas.forEach((encuesta) => {
+      if(encuesta.active == 'Y'){
+        ayuda = 'Activa'
+      }else{
+        ayuda = 'Inactiva'
+      }
+      resultados2 += `<tr>
+                            <td class="text-center">${encuesta.sid}</td>
+                            <td class="text-center">${encuesta.surveyls_title}</td>
+                            <td class="text-center">${ayuda}</td>
+                            <td class="text-center">${encuesta.startdate}</td>
+                            <td class="text-center"></td>
+                            <td class="text-center"><a class="btnVer btn btn-primary">Ver</a></td>
+
+
+                       </tr>
+                    `
+    });
+    formTablaBien.innerHTML = resultados2;
+};
+
+  
