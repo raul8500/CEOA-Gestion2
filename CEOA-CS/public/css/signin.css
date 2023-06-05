@@ -40,12 +40,3 @@ body {
   border-top-right-radius: 0;
 }
 
-.rueditas{
-  background-color: blue;
-  border-radius: 50%;
-  width: 100px;
-  height: 100px;
-  position: absolute;
-  left: 35%;
-  z-index: -1;
-}

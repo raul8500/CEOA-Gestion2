@@ -4,7 +4,6 @@ const urlLIME = 'http://localhost:8081/api/lime/encuestas';
 const url3 = 'http://localhost:8081/api/lime/guardarGrupos'
 
 const contenedor = document.querySelector('tbody');
-const idGrupo = document.getElementById('idGrupo');
 const nombreGrupo = document.getElementById('nombreGrupo');
 const formArticulo = document.getElementById('tbodyModal');
 
@@ -14,7 +13,8 @@ const myModalEl = document.getElementById('exampleModal');
 const modal = new mdb.Modal(myModalEl);
 let resultados = '';
 let resultados2 = '';
-let ayuda = ''
+let estado = ''
+let fechaInicio = ''
 
 const id2 = localStorage.getItem('id');
 
@@ -63,7 +63,6 @@ function showDetails(e) {
 function leeselect() {
   const id = localStorage.getItem('id');
   const grupo = localStorage.getItem('grupo');
-  idGrupo.innerHTML = id;
   nombreGrupo.innerHTML = grupo;
 }
 
@@ -121,15 +120,20 @@ fetch(url+'/'+id2)
 const mostrar2 = (encuestas) => {
     encuestas.forEach((encuesta) => {
       if(encuesta.active == 'Y'){
-        ayuda = 'Activa'
+        estado = 'Activa'
       }else{
-        ayuda = 'Inactiva'
+        estado = 'Inactiva'
+      }
+      if(encuesta.startdate == null){
+        fechaInicio = 'No especificada'
+      }else{
+        fechaInicio = encuesta.startdate
       }
       resultados2 += `<tr>
                             <td class="text-center">${encuesta.sid}</td>
                             <td class="text-center">${encuesta.surveyls_title}</td>
-                            <td class="text-center">${ayuda}</td>
-                            <td class="text-center">${encuesta.startdate}</td>
+                            <td class="text-center">${estado}</td>
+                            <td class="text-center">${fechaInicio}</td>
                             <td class="text-center"></td>
                             <td class="text-center"><a class="btnVer btn btn-primary">Ver</a></td>
 
@@ -139,5 +143,13 @@ const mostrar2 = (encuestas) => {
     });
     formTablaBien.innerHTML = resultados2;
 };
+
+
+on(document, 'click', '.btnVer', e => {  
+  const fila = e.target.parentNode.parentNode
+  const idEncuesta = fila.children[0].innerHTML
+  localStorage.setItem("encuesta", idEncuesta);
+  location.href ='/verProyecto';
+})
 
   

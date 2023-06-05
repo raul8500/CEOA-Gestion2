@@ -133,98 +133,59 @@
     <!--Main layout-->
     <main style="margin-top: 58px">
       <div class="container pt-4">
-        <h1 class="centrarTexto"> Proyectos</h1>
+        <h1 class="centrarTexto"> Proyecto</h1>
 
         <div>
             <br>
-            <label style="font-weight: bold;" >Nombre del Grupo:</label>
-            <label id="nombreGrupo"></label>
+            <label style="font-weight: bold;" >Id del proyecto:</label>
+            <label id="nombreEncuesta"></label>
         </div>
 
-        <!--Botones-->
-        <div class="pt-2 " >
-            <div class="pt-2">
-                <button id="btnReporye" type="button" class="btn btn-outline-primary" data-mdb-ripple-color="dark" data-mdb-target="#exampleModal" data-mdb-whatever="@mdo" >
-                    Reporte
-                </button>
-                <button id="btnAsignar" type="button" class="btn btn-outline-primary" data-mdb-ripple-color="dark" data-mdb-toggle="modal" data-mdb-target="#exampleModal" data-mdb-whatever="@mdo" >
-                    Asignar Encuesta
-                </button>
+        <br>
+
+        <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Informacion general del proyecto</h5>
+              <p class="card-text">Selecciona las opciones que necesitas para descargar:</p>
+              <p class="card-text">No.Oficio:</p>
+              <p class="card-text">Nombre Proyecto:</p>
+              <p class="card-text">Director:</p>
+              <p class="card-text">Responsable:</p>
+              <p class="card-text">Fecha:</p>
+              <p class="card-text">Descripcion del proyecto:</p>
+              <div class="text-end">
+                <button type="button" class="btn btn-primary">Editar</button>
+              </div>
             </div>
         </div>
 
-        <!--tablass-->
-        <div class="table-responsive pt-3">
-            <table id="tablaBien"  class="table align-middle table-striped ">
-                <thead>
-                  <tr class="table-success text-center">
-                    <th scope="col">ID</th>
-                    <th scope="col">Nombre proyecto</th>
-                    <th scope="col">Estado</th>
-                    <th scope="col">Fecha Inicio</th>
-                    <th scope="col">Fecha Termino</th>
-                    <th scope="col">Acciones</th>
-                  </tr>
-                </thead>
-                <tbody id="tbody1">
-                    <!--Contenido en Code.js-->
-                </tbody>
-              </table>
-        </div>
+        <br>
 
-        <!--Modal-->
-        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-          <div class="modal-dialog">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Encuestas LimeSurvey</h5>
-                <button type="button" class="btn-close" data-mdb-dismiss="modal" aria-label="Close"></button>
-              </div>
-              <div class="modal-body">
-                <form>
-
-                  <div class="mb-3">
-                    <label for="recipient-name" class="col-form-label">Lista de encuestas en el sistema de LimeSurvey:</label>
-                  </div>
-
-                
-                  
-                  <div class="table-responsive pt-3">
-                    <table id="hola" class="table align-middle table-striped ">
-                        <thead>
-                          <tr class="table-success text-center">
-                            <th scope="col">Selección</th>
-                            <th class="sid" scope="col">ID</th>
-                            <th class="nombreGrupo" scope="col">Nombre proyecto</th>
-                          </tr>
-                        </thead>
-                        <tbody id="tbodyModal">
-                            
-                        </tbody>
-                      </table>
-                  </div> 
-
-                <div class="modal-footer">
-                  <button id="btnCancelarModal" type="button" class="btn btn-secondary" data-mdb-dismiss="modal">Cerrar</button>
-                  <button id="btnAsignarModal" type="submit" class="btn btn-primary">Asignar</button>
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Descargar encuesta</h5>
+                <p class="card-text">Selecciona las opciones que necesitas para descargar</p>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" />
+                    <label class="form-check-label" for="flexCheckDefault">Respuestas en Excel</label>
                 </div>
-
-                </form>
-              </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" />
+                    <label class="form-check-label" for="flexCheckDefault">Respuestas en CSV</label>
+                </div>
+                <br>
+                <button type="button" class="btn btn-primary">Descargar</button>
             </div>
-          </div>
         </div>
-
-
+          
 
       </div>
     </main>
     
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.2.0/mdb.min.js"></script>
     <script src="js/alertify.min.js"></script>
-
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script src="js/verProyectos.js"></script>
+    <script src="js/verInfoProyecto.js"></script>
 </body>
 
 </html>

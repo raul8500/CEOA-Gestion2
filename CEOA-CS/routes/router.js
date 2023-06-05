@@ -5,6 +5,7 @@ const accesos = require('../controllers/accesos')
 const gestion = require('../controllers/gestion')
 const perfil = require('../controllers/perfil')
 const lime = require('../controllers/LIME_Encuestas')
+const proyectos = require('../controllers/proyectos')
 const { liquid } = require('consolidate')
 
 
@@ -26,6 +27,15 @@ router.get('/verGrupos', authController.isAuthenticated, authController.isAdmin,
 })
 router.get('/perfil', authController.isAuthenticated, authController.isAdmin, (req, res)=>{    
     res.render('perfil', {user:req.user})
+})
+router.get('/verProyecto', authController.isAuthenticated, authController.isAdmin, (req, res)=>{    
+    res.render('verProyecto', {user:req.user})
+})
+router.get('/test', authController.isAuthenticated, authController.isAdmin, (req, res)=>{    
+    res.render('test', {user:req.user})
+})
+router.get('/test2', authController.isAuthenticated, authController.isAdmin, (req, res)=>{    
+    res.render('testODOO', {user:req.user})
 })
 
 
@@ -54,5 +64,9 @@ router.get('/api/perfil/',authController.isAuthenticated,perfil.mostrar)
 router.put('/api/perfil/actualizar/',authController.isAuthenticated,perfil.editar)
 router.put('/api/perfil/actualizarPass/',authController.isAuthenticated,perfil.password)
 
+
+//Rutas Proyectos
+router.get('/api/proyectos/',authController.isAuthenticated, proyectos.mostrar)
+router.post('/api/proyectos/crear',authController.isAuthenticated, proyectos.crear)
 
 module.exports = router

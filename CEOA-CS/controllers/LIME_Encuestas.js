@@ -97,7 +97,6 @@ exports.asignarEncuestas = async (req, res) => {
   }
 }
 
-
 const obtenerGrupos = (id) =>{
   return new Promise((resolve, reject) => {
     conexion.query('SELECT * FROM asignadasid where id_grupo ='+id, (error,filas)=>{
