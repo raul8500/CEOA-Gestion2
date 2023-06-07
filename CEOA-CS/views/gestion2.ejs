@@ -22,7 +22,7 @@
     <!-- Default theme -->
     <link rel="stylesheet" href="css/themes/default.min.css"/>
 </head>
-<body">
+<body>
     <!--Main Navigation-->
   <header>
     <!-- Sidebar -->
@@ -119,7 +119,7 @@
                 class="dropdown-menu dropdown-menu-end"
                 aria-labelledby="navbarDropdownMenuLink"
                 >
-              <li><a class="dropdown-item" href="#">My profile</a></li>
+              <li><a class="dropdown-item" href="perfil">My profile</a></li>
               <li><a class="dropdown-item" href="/logout">Logout</a></li>
             </ul>
           </li>
@@ -133,127 +133,71 @@
     <!--Main layout-->
     <main style="margin-top: 58px">
       <div class="container pt-4">
-        <h1 class="centrarTexto"> Test</h1>
+        <h1 class="centrarTexto"> Gestión de proyectos </h1>
 
-        <ul class="nav nav-pills mb-3" id="pills-tab2" role="tablist">
-            <li class="nav-item" role="presentation">
-              <button
-                class="nav-link active"
-                id="pills-home-tab2"
-                data-mdb-toggle="pill"
-                data-mdb-target="#pills-home2"
-                type="button"
-                role="tab"
-                aria-controls="pills-home"
-                aria-selected="true"
-              >
-                Proyectos
-              </button>
-            </li>
-            <li class="nav-item" role="presentation">
-              <button
-                class="nav-link"
-                id="pills-profile-tab2"
-                data-mdb-toggle="pill"
-                data-mdb-target="#pills-profile2"
-                type="button"
-                role="tab"
-                aria-controls="pills-profile"
-                aria-selected="false"
-              >
-                Grupos
-              </button>
-            </li>
-          </ul>
-
-        <div class="tab-content" id="pills-tabContent2">
-        <div
-            class="tab-pane fade show active"
-            id="pills-home2"
-            role="tabpanel"
-            aria-labelledby="pills-home-tab2"
-        >
-            <div class="text-end">
-                <button id="btnCrear" type="button" class="btn btn-primary"data-mdb-ripple-color="dark" data-mdb-toggle="modal" data-mdb-target="#exampleModal" data-mdb-whatever="@mdo" >Crear Proyecto</button>
-            </div>
-            <div class="table-responsive pt-3">
-                <table id="tablaBien"  class="table align-middle table-striped ">
-                    <thead>
-                    <tr class="table-primary text-center ">
-                        <th scope="col">ID</th>
-                        <th scope="col">Nombre proyecto</th>
-                        <th scope="col">Estado</th>
-                        <th scope="col">Fecha Inicio</th>
-                        <th scope="col">Fecha Termino</th>
-                        <th scope="col">Acciones</th>
-                    </tr>
-                    </thead>
-                    <tbody id="tbodyProyectos">
-                        <!--Contenido en Code.js-->
-                    </tbody>
-                </table>
-            </div>
-        </div>
-        <div
-            class="tab-pane fade"
-            id="pills-profile2"
-            role="tabpanel"
-            aria-labelledby="pills-profile-tab2"
-        >
-        <div class="text-end">
-            <button type="button" class="btn btn-primary">Crear Grupo</button>
+        <!--Botones-->
+        <div class="pt-2">
+            <button id="btnCrear" type="button" class="btn btn-outline-primary" data-mdb-ripple-color="dark" data-mdb-toggle="modal" data-mdb-target="#exampleModal" data-mdb-whatever="@mdo" >
+                Crear Grupo
+          </button>
+          <button id="btnReporte" type="button" class="btn btn-outline-primary" data-mdb-ripple-color="dark" data-mdb-whatever="@mdo" >
+            Generar Reporte
+      </button>
         </div>
 
+        <!--tablass-->
         <div class="table-responsive pt-3">
             <table class="table align-middle table-striped ">
                 <thead>
-                    <tr class="table-info text-center">
+                  <tr class="table-success text-center">
                     <th scope="col">ID</th>
-                    <th scope="col">Nombre grupo</th>
-                    <th scope="col">No. Proyectos</th>
-                    <th scope="col">Fecha Creacion</th>
+                    <th scope="col">Nombre Grupo</th>
+                    <th scope="col">Numero de proyectos</th>
+                    <th scope="col">Estado del Grupo</th>
+                    <th scope="col">Fecha creacion</th>
+                    <th scope="col">Fecha Finalizacion</th>
                     <th scope="col">Acciones</th>
-                    </tr>
+                  </tr>
                 </thead>
-                <tbody id="tbodyGrupos">
+                <tbody>
                     <!--Contenido en Code.js-->
                 </tbody>
-            </table>
-        </div>
-        </div>
+              </table>
         </div>
 
+        <!--Modal-->
         <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog">
               <div class="modal-content">
                 <div class="modal-header">
-                  <h5 class="modal-title" id="exampleModalLabel">Crear Nuevo Proyecto</h5>
+                  <h5 class="modal-title" id="exampleModalLabel">Registrar nuevo grupo</h5>
                   <button type="button" class="btn-close" data-mdb-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                  <form id="formProyecto">
+                  <form>
                     <div class="mb-3">
-                      <label for="recipient-name" class="col-form-label">Nombre del proyecto:</label>
-                      <input type="text" class="form-control" id="nombreProyecto" />
+                      <label for="recipient-name" class="col-form-label">Nombre del grupo:</label>
+                      <input type="text" class="form-control" id="nameGroupp" />
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-mdb-dismiss="modal">Cancelar</button>
-                        <button id="btnCrear2" type="submit" class="btn btn-primary">Crear</button>
+                        <button type="button" class="btn btn-secondary" data-mdb-dismiss="modal">Cerrar</button>
+                        <button type="submit" class="btn btn-primary">Guardar</button>
                     </div>
                   </form>
                 </div>
               </div>
             </div>
-          </div>
-          
+        </div>
 
+        </div>
       </div>
     </main>
     
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.2.0/mdb.min.js"></script>
     <script src="js/alertify.min.js"></script>
+
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script src="js/test.js"></script>
+    <script type="text/javascript" src="js/gestion.js"></script>
 </body>
 
 </html>

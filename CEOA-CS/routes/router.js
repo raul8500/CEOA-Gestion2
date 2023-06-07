@@ -6,6 +6,7 @@ const gestion = require('../controllers/gestion')
 const perfil = require('../controllers/perfil')
 const lime = require('../controllers/LIME_Encuestas')
 const proyectos = require('../controllers/proyectos')
+const tareas = require('../controllers/tareas')
 const { liquid } = require('consolidate')
 
 
@@ -68,5 +69,9 @@ router.put('/api/perfil/actualizarPass/',authController.isAuthenticated,perfil.p
 //Rutas Proyectos
 router.get('/api/proyectos/',authController.isAuthenticated, proyectos.mostrar)
 router.post('/api/proyectos/crear',authController.isAuthenticated, proyectos.crear)
+
+//Rutas Tareas
+router.get('/api/tareas/:id',authController.isAuthenticated, tareas.mostrar)
+router.post('/api/tareas/crear',authController.isAuthenticated, tareas.crear)
 
 module.exports = router

@@ -1,56 +1,53 @@
 
 //Definición de variables
-const url = 'http://localhost:8081/api/grupos/'
-const url2 = 'http://localhost:8081/api/grupos/'
-const contenedor = document.querySelector('tbody')
+const url = 'http://localhost:8081/api/proyectos/'
+const contenedor = document.getElementById('tbodyProyectos')
 let resultados = ''
 
 
-//variables
-const formGroup = document.querySelector('form')
-const nameGroups = document.getElementById('nameGroupp')
-const idd = document.getElementById('idGrupo')
-var date = ''
-var d = ''
-var dateF= 'ayuda'
-//Modal
+const formProyecto = document.getElementById('formProyecto')
+const nombreProyecto = document.getElementById('nombreProyecto')
 const myModalEl = document.getElementById('exampleModal')
 const modal = new mdb.Modal(myModalEl)
 
+var opcion = ''
 
-//Variables de creacion
-var noProyect_ = 0
-var state_ = 1
-var dateI_ = 'CURRENT_DATE()'
-var dateF_ = null
-
-//Crear boton
 btnCrear.addEventListener('click', ()=>{
-    nameGroups.value = ''
+    nombreProyecto.value = ''
     opcion = 'crear'
 })
 
-const mostrar = (grupos) => {
-    grupos.forEach(grupo => {
+var estado = ''
+var date = ''
+var d = ''
+var dateF_ = ''
 
-        d = new Date(grupo.date_I);
-        console.log(d.getMonth())
+//funcion para mostrar los resultados
+
+const mostrar = (proyectos) => {
+    proyectos.forEach(proyecto => {
+        if(proyecto.estado == 1){
+            estado = 'Activo'
+        }else{
+            estado = 'Inactivo'
+        }
+        d = new Date(proyecto.fechaInicio);
         date = d.getDate()+'/'+ (d.getMonth()+1)+'/'+d.getFullYear()
 
-        if (grupo.dateF == null){
+        if (proyecto.fechaTermino == null){
             dateF = 'N/A'
         }else{
-            dateF = grupo.date_F
+            dateF = proyecto.fechaTermino
         }
+
         resultados += `<tr>
-                            <td class="text-center">${grupo.id}</td>
-                            <td class="text-center">${grupo.nameGroup_}</td>
-                            <td class="text-center">${grupo.noProyect_}</td>
-                            <td class="text-center">${grupo.state_}</td>
+                            <td class="text-center">${proyecto.idPro}</td>
+                            <td class="text-center">${proyecto.nombreProyecto}</td>
+                            <td class="text-center">${estado}</td>
                             <td class="text-center">${date}</td>
                             <td class="text-center">${dateF}</td>
                             <td class="text-center">
-                                <a class="verGrupos btn btn-primary">Ver</a>
+                                <a class="btnVer btn btn-secondary">Ver</a>
                             </td>
                        </tr>
                     `
@@ -60,41 +57,43 @@ const mostrar = (grupos) => {
 
 //Procedimiento Mostrar
 fetch(url)
-    .then( response => response.json())
+    .then( response => response.json() )
     .then( data => mostrar(data) )
     .catch( error => console.log(error))
-
     const on = (element, event, selector, handler) => {
-        //console.log(element)
-        //console.log(event)
-        //console.log(selector)
-        //console.log(handler)
-        element.addEventListener(event, e => {
-            if(e.target.closest(selector)){
-                handler(e)
-            }
-        })
-    } 
+    element.addEventListener(event, e => {
+        if(e.target.closest(selector)){
+            handler(e)
+        }
+    })
+} 
 
-    function showDetails(e){
+
+function showDetails(e){
     e.preventDefault();
     const documento = e.target.parentNode.parentNode.children[1].textContent;
     console.log(documento)
 }
 
+function validaciones() {
+    const nombreProyectoValue = nombreProyecto.value.trim(); // Eliminar espacios en blanco al inicio y al final
 
-on(document, 'click', '.verGrupos', e => {  
-    const fila = e.target.parentNode.parentNode
-    idForm = fila.children[0].innerHTML
-    nombreGrupo = fila.children[1].innerHTML
-    localStorage.setItem("id", idForm);
-    localStorage.setItem("grupo", nombreGrupo);
-    location.href ='/verGrupos';
-})
+    if (nombreProyectoValue.length === 0) {
+        return false;
+    } else {
+        // Validar caracteres permitidos en el campo nombreProyecto
+        const regex = /^[a-zA-Z0-9\s]+$/; // Expresión regular para permitir letras, números y espacios
+        if (!regex.test(nombreProyectoValue)) {
+            return false;
+        }
 
-formGroup.addEventListener('submit', (e)=>{
+        return true;
+    }
+}
+
+formProyecto.addEventListener('submit', (e)=>{
     e.preventDefault()
-    if(nameGroups.value.length != 0){
+    if(validaciones()){
         if(opcion=='crear'){   
             //console.log('OPCION CREAR')
             fetch(url+'crear', {
@@ -103,57 +102,20 @@ formGroup.addEventListener('submit', (e)=>{
                     'Content-Type':'application/json'
                 },
                 body: JSON.stringify({
-                    nameGroup:nameGroups.value,
-                    
+                    nombreProyecto_:nombreProyecto.value
                 })
             })
-
             Swal.fire({
-            icon: 'success',
-            title: 'Registro exitoso',
-            showConfirmButton: false,
-            timer: 1500
-            })
-            modal.hide()
-
+                icon: 'success',
+                title: 'Edicion exitosa',
+                showConfirmButton: false,
+                timer: 1500
+                })
+    
             setTimeout(function() {
                 location.reload()
-              }, 1500);
+            }, 2000);
         }
-        if(opcion=='ver'){
-            localStorage.setItem("myCat", "Tom");
-        }
-        /*
-        if(opcion=='editar'){    
-        //console.log('OPCION EDITAR')
-            if(radioAdmin.checked){
-                rol= 1
-            }else{
-                rol = 0
-            }
-            fetch(url+'editar/' +idForm,{
-                method: 'PUT',
-                headers: {
-                    'Content-Type':'application/json'
-                },
-                body: JSON.stringify({
-                    name:name.value,
-                    lastname:lastname.value,
-                    email:email.value,
-                    rol:rol,
-                    user:user.value,
-                })
-            })
-            .then( response => response.json() )
-            .then( response => location.reload() )
-
-              }
-            Swal.fire({
-            icon: 'success',
-            title: 'Edicion exitosa',
-            showConfirmButton: false,
-            timer: 1500
-            })*/
     }else{
         Swal.fire({
             icon: 'error',
@@ -165,8 +127,11 @@ formGroup.addEventListener('submit', (e)=>{
 
 
 
-
-
-
+on(document, 'click', '.btnVer', e => {  
+    const fila = e.target.parentNode.parentNode
+    const idProyecto = fila.children[0].innerHTML
+    localStorage.setItem("idProyecto", idProyecto);
+    location.href ='/test2';
+})
 
 

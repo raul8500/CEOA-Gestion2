@@ -133,102 +133,90 @@
     <!--Main layout-->
     <main style="margin-top: 58px">
       <div class="container pt-4">
-        <h1 class="centrarTexto"> Test Gestion Individual</h1>
+        <h1 class="centrarTexto"> Gestión Individual</h1>
 
-        <div class="row">
 
-          <div class="col-sm-4">
-            <div class="card">
-              <div class="card-body">
-                <div class="text-end">
-                  <button type="button" class="btn btn-primary btn-floating btn-sm">
-                    <i class="fas fa-plus"></i>
-                  </button>
-                </div>
-                <h5 class="card-title">1. Primer Acercamiento</h5>
-                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                <button type="button" class="btn text-start">
-                  <span>Se recibió un correo tal tal tal aaaaaaaaaaaaaaaaa</span>
-                </button>
-              </div>
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title ">Información general del proyecto</h5>
+            <label style="font-weight: bold;">Nombre del proyecto:</label>
+            <br>
+            <label style="font-weight: bold;">Nombre del proyecto:</label>
+            
+            <div class="text-end">
+              <button type="button" class="btn btn-primary">Editar</button>
             </div>
           </div>
-          
-
-
-          <div class="col-sm-4">
-            <div class="card">
-              <div class="card-body">
-                <div class="text-end">
-                  <button type="button" class="btn btn-primary btn-floating btn-sm">
-                    <i class="fas fa-plus"></i>
-                  </button>
-                </div>
-                <h5 class="card-title">2. Oficio y Responsable</h5>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-sm-4">
-            <div class="card">
-              <div class="card-body">
-                <div class="text-end">
-                  <button type="button" class="btn btn-primary btn-floating btn-sm">
-                    <i class="fas fa-plus"></i>
-                  </button>
-                </div>
-                <h5 class="card-title">3. Cuestionario</h5>
-              </div>
-            </div>
-          </div>
-
         </div>
-
         <br>
 
         <div class="row">
-
           <div class="col-sm-4">
-            <div class="card">
-              <div class="card-body">
+            <div class="card bg-info text-white">
+              <div class="card-header">
                 <div class="text-end">
-                  <button type="button" class="btn btn-primary btn-floating btn-sm">
+                  <button id="boton1" type="button" class="btn btn-light  btn-floating btn-sm" data-mdb-ripple-color="dark" data-mdb-toggle="modal" data-mdb-target="#exampleModal" data-mdb-whatever="@mdo">
                     <i class="fas fa-plus"></i>
                   </button>
+                  <h5 class="centrarTexto">1. Primer Acercamiento</h1>
                 </div>
-                <h5 class="card-title">4. LimeSurvey</h5>
               </div>
-            </div>
-          </div>
-
-
-          <div class="col-sm-4">
-            <div class="card">
               <div class="card-body">
-                <div class="text-end">
-                  <button type="button" class="btn btn-primary btn-floating btn-sm">
-                    <i class="fas fa-plus"></i>
-                  </button>
+                <!-- Informacion -->
+                <div id="divInfo" >
+                  
                 </div>
-                <h5 class="card-title">5. Analisis de datos</h5>
               </div>
             </div>
           </div>
 
           <div class="col-sm-4">
-            <div class="card">
-              <div class="card-body">
+            <div class="card bg-info text-white">
+              <div class="card-header">
                 <div class="text-end">
-                  <button type="button" class="btn btn-primary btn-floating btn-sm">
+                  <button id="boton1" type="button" class="btn btn-light  btn-floating btn-sm" data-mdb-ripple-color="dark" data-mdb-toggle="modal" data-mdb-target="#exampleModal" data-mdb-whatever="@mdo">
                     <i class="fas fa-plus"></i>
                   </button>
+                  <h5 class="centrarTexto">2. Oficio y responsable</h1>
                 </div>
-                <h5 class="card-title">6. Entrega</h5>
+              </div>
+              <div class="card-body">
+                <!-- Informacion -->
+                <div id="" >
+                  
+                </div>
               </div>
             </div>
           </div>
-
         </div>
+
+        <!--Modal para el primer acercamiento-->
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Agregar nueva tarea</h5>
+                <button type="button" class="btn-close" data-mdb-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                <form id="formPrimerAcercamiento">
+                  <div class="mb-3">
+                    <label for="recipient-name" class="col-form-label">Nombre de la tarea:</label>
+                    <input type="text" class="form-control" id="nombreTareaPrimer" />
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-mdb-dismiss="modal">Cancelar</button>
+                    <button id="btnCrear2" type="submit" class="btn btn-primary">Crear</button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+
+
 
       </div>
     </main>
@@ -236,6 +224,8 @@
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.2.0/mdb.min.js"></script>
     <script src="js/alertify.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <script src="js/testODOO.js"></script>
 </body>
 
 </html>
