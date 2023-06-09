@@ -23,21 +23,16 @@ router.get('/gestion',authController.isAuthenticated,authController.isAdmin, (re
 router.get('/accesos', authController.isAuthenticated, authController.isAdmin, (req, res)=>{    
     res.render('accesos', {user:req.user})
 })
-router.get('/verGrupos', authController.isAuthenticated, authController.isAdmin, (req, res)=>{    
-    res.render('verGrupos', {user:req.user})
-})
 router.get('/perfil', authController.isAuthenticated, authController.isAdmin, (req, res)=>{    
     res.render('perfil', {user:req.user})
 })
-router.get('/verProyecto', authController.isAuthenticated, authController.isAdmin, (req, res)=>{    
-    res.render('verProyecto', {user:req.user})
+router.get('/gestionIndividual', authController.isAuthenticated, authController.isAdmin, (req, res)=>{    
+    res.render('gestionIndividual', {user:req.user})
 })
-router.get('/test', authController.isAuthenticated, authController.isAdmin, (req, res)=>{    
-    res.render('test', {user:req.user})
+router.get('/primerAcercamiento', authController.isAuthenticated, authController.isAdmin, (req, res)=>{    
+    res.render('./vistasTareas/primerAcercamiento', {user:req.user})
 })
-router.get('/test2', authController.isAuthenticated, authController.isAdmin, (req, res)=>{    
-    res.render('testODOO', {user:req.user})
-})
+
 
 
 //Rutas lime
@@ -69,9 +64,18 @@ router.put('/api/perfil/actualizarPass/',authController.isAuthenticated,perfil.p
 //Rutas Proyectos
 router.get('/api/proyectos/',authController.isAuthenticated, proyectos.mostrar)
 router.post('/api/proyectos/crear',authController.isAuthenticated, proyectos.crear)
+router.get('/api/proyectos/info/:id',authController.isAuthenticated, proyectos.mostrarProyectoIndivudual)
 
 //Rutas Tareas
+    //1. Primer Acercamiento
 router.get('/api/tareas/:id',authController.isAuthenticated, tareas.mostrar)
 router.post('/api/tareas/crear',authController.isAuthenticated, tareas.crear)
+router.get('/api/tareas/info/:id',authController.isAuthenticated, tareas.mostrarPrimerInvividual)
+
+    //2. Oficio responsable
+router.get('/api/tareas/oficio/:id',authController.isAuthenticated,tareas.mostrarOficio)
+
+
+
 
 module.exports = router

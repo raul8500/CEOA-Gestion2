@@ -1,7 +1,9 @@
 const conexion = require('../database/db')
 const bcryptjs = require('bcryptjs')
 
-//Mostrar
+
+
+//Proyectos
 exports.mostrar = async (req, res)=>{    
     try {
         conexion.query('SELECT * FROM proyectos', (error,filas)=>{
@@ -16,7 +18,6 @@ exports.mostrar = async (req, res)=>{
     }       
 }
 
-//Crear usuario
 exports.crear = async (req, res)=>{
 
     let data = req.body.nombreProyecto_
@@ -28,7 +29,6 @@ exports.crear = async (req, res)=>{
 })
 }
 
-//Editar articulo
 exports.editar = async (req, res)=>{    
 
     let id = req.params.id
@@ -47,7 +47,6 @@ exports.editar = async (req, res)=>{
         }
     })
 }
-//Eliminar articulo
 exports.delete = async (req, res)=>{    
     conexion.query('DELETE FROM proyectos WHERE idPro = ?', [req.params.id], function(error, filas){
         if(error){
@@ -56,5 +55,19 @@ exports.delete = async (req, res)=>{
             res.send(filas)
         }
     })
+}
+
+exports.mostrarProyectoIndivudual = async (req, res)=>{    
+    try {
+        conexion.query('SELECT * FROM proyectos where idPro = ?', [req.params.id], (error,filas)=>{
+            if(error){
+                throw error
+            }else{
+                res.send(filas)
+            }
+        })
+    } catch (error) {
+        console.log(error)
+    }       
 }
 

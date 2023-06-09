@@ -1,11 +1,16 @@
 const url = 'http://localhost:8081/api/tareas/'
 const test = document.getElementById('divInfo')
+const fase2 = document.getElementById('divFase2')
 var resultados = ''
+var resultadosOficio = ''
 const nombreTareaPrimer = document.getElementById('nombreTareaPrimer')
 const formPrimer = document.getElementById('formPrimerAcercamiento')
 const idProyecto = localStorage.getItem('idProyecto');
 
 
+
+
+//Funciones para Fase 1
 const mostrar = (tareas) => {
     tareas.forEach(tarea => {
         resultados += `<button id='${tarea.idPrimer}' type="button" class="btnTareaPrimer btn btn-info text-center col-sm-12 text-white">
@@ -28,11 +33,11 @@ fetch(url+idProyecto)
         }
     })
 } 
-
-boton1.addEventListener('click', ()=>{
+btnPrimerAcercamiento.addEventListener('click', ()=>{
     nombreTareaPrimer.value = ''
 })
 
+//Agregar
 formPrimer.addEventListener('submit', (e)=>{
     e.preventDefault()
     if(validaciones()){
@@ -66,7 +71,7 @@ formPrimer.addEventListener('submit', (e)=>{
         })
     }
 })
-
+//Validaciones generales
 function validaciones() {
     const nombreTareaPrimerValue = nombreTareaPrimer.value.trim(); // Eliminar espacios en blanco al inicio y al final
 
@@ -83,24 +88,20 @@ function validaciones() {
     }
 }
 
-const botones = document.querySelectorAll('.btnTareaPrimer');
-botones.forEach((boton) => {
-  boton.addEventListener('click', obtenerPropiedades);
+on(document, 'click', '.btnTareaPrimer', e => {
+    const boton = e.target.closest('button');
+    if (boton) {
+      const idBoton = boton.id;
+      localStorage.setItem("idFase1Primer",idBoton);
+      location.href ='/primerAcercamiento';
+    }
 });
+  
+  
+  
 
-function obtenerPropiedades(event) {
-  const boton = event.target;
-  // Obtener el contenido del botón
-  const contenido = boton.innerHTML;
-  // Verificar si el contenido coincide con el botón específico
-  if (contenido === 'Botón Específico') {
-    // Realizar las operaciones deseadas para el botón específico
-    console.log('Propiedades del botón específico:');
-    console.log('Contenido:', contenido);
-    console.log('ID:', boton.id);
-    console.log('Atributos adicionales:', boton.getAttribute('data-custom'));
-  }
-}
+
+
 
 
 

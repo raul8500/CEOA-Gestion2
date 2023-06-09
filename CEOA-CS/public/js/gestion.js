@@ -107,7 +107,7 @@ formProyecto.addEventListener('submit', (e)=>{
             })
             Swal.fire({
                 icon: 'success',
-                title: 'Edicion exitosa',
+                title: 'Correctamente creado',
                 showConfirmButton: false,
                 timer: 1500
                 })
@@ -131,7 +131,7 @@ on(document, 'click', '.btnVer', e => {
     const fila = e.target.parentNode.parentNode
     const idProyecto = fila.children[0].innerHTML
     localStorage.setItem("idProyecto", idProyecto);
-    location.href ='/test2';
+    location.href ='/gestionIndividual';
 })
 
 

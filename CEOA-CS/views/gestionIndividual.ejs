@@ -135,27 +135,40 @@
       <div class="container pt-4">
         <h1 class="centrarTexto"> Gestión Individual</h1>
 
-
+        <div class="dropdown text-end" style="margin-bottom: 10pt;">
+          <button
+            class="btn btn-primary dropdown-toggle"
+            type="button"
+            id="dropdownMenuButton"
+            data-mdb-toggle="dropdown"
+            aria-expanded="false"
+          >
+          <i class="fa fa-cog" aria-hidden="true"></i>
+          </button>
+          <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <li><a class="dropdown-item text-white" style="background-color: lightblue" href="#">Editar</a></li>
+            <li><a class="dropdown-item text-white" style="background-color:lightcoral"  href="#">Eliminar</a></li>
+          </ul>
+        </div>
+        <!--CARD para la informacion del proyecto-->
         <div class="card">
           <div class="card-body">
             <h5 class="card-title ">Información general del proyecto</h5>
             <label style="font-weight: bold;">Nombre del proyecto:</label>
             <br>
             <label style="font-weight: bold;">Nombre del proyecto:</label>
-            
-            <div class="text-end">
-              <button type="button" class="btn btn-primary">Editar</button>
-            </div>
           </div>
         </div>
         <br>
 
+        <!--Cards de las Fases-->
         <div class="row">
+          <!--Primer Acercamiento-->
           <div class="col-sm-4">
             <div class="card bg-info text-white">
               <div class="card-header">
                 <div class="text-end">
-                  <button id="boton1" type="button" class="btn btn-light  btn-floating btn-sm" data-mdb-ripple-color="dark" data-mdb-toggle="modal" data-mdb-target="#exampleModal" data-mdb-whatever="@mdo">
+                  <button id="btnPrimerAcercamiento" type="button" class="btn btn-light  btn-floating btn-sm" data-mdb-ripple-color="dark" data-mdb-toggle="modal" data-mdb-target="#exampleModal" data-mdb-whatever="@mdo">
                     <i class="fas fa-plus"></i>
                   </button>
                   <h5 class="centrarTexto">1. Primer Acercamiento</h1>
@@ -170,11 +183,12 @@
             </div>
           </div>
 
+          <!--Oficio y responsable-->
           <div class="col-sm-4">
             <div class="card bg-info text-white">
               <div class="card-header">
                 <div class="text-end">
-                  <button id="boton1" type="button" class="btn btn-light  btn-floating btn-sm" data-mdb-ripple-color="dark" data-mdb-toggle="modal" data-mdb-target="#exampleModal" data-mdb-whatever="@mdo">
+                  <button id="botonFase2" type="button" class="btn btn-light  btn-floating btn-sm" data-mdb-ripple-color="dark" data-mdb-toggle="modal" data-mdb-target="#exampleModal" data-mdb-whatever="@mdo">
                     <i class="fas fa-plus"></i>
                   </button>
                   <h5 class="centrarTexto">2. Oficio y responsable</h1>
@@ -182,12 +196,14 @@
               </div>
               <div class="card-body">
                 <!-- Informacion -->
-                <div id="" >
+                <div id="divFase2" >
                   
                 </div>
               </div>
             </div>
           </div>
+
+
         </div>
 
         <!--Modal para el primer acercamiento-->
@@ -213,6 +229,10 @@
             </div>
           </div>
         </div>
+        
+        <!--Modal para oficio y responsable-->
+
+        
 
 
 
@@ -225,7 +245,8 @@
     <script src="js/alertify.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
-    <script src="js/testODOO.js"></script>
+    <script src="js/gestionIndividual.js"></script>
+    <script src="js/gestionIndividualFase2.js"></script>
 </body>
 
 </html>

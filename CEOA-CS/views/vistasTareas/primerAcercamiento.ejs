@@ -22,7 +22,7 @@
     <!-- Default theme -->
     <link rel="stylesheet" href="css/themes/default.min.css"/>
 </head>
-<body onload="leeselect()">
+<body">
     <!--Main Navigation-->
   <header>
     <!-- Sidebar -->
@@ -132,100 +132,108 @@
     <!--Main Navigation-->
     <!--Main layout-->
     <main style="margin-top: 58px">
-      <div class="container pt-4">
-        <h1 class="centrarTexto"> Proyectos</h1>
+        <div class="container pt-4">
 
-        <div>
-            <br>
-            <label style="font-weight: bold;" >Nombre del Grupo:</label>
-            <label id="nombreGrupo"></label>
-        </div>
+          <!-- Example single danger button -->
+          <div class="dropdown text-end" style="margin-bottom: 10pt;">
+            <button
+              class="btn btn-primary dropdown-toggle"
+              type="button"
+              id="dropdownMenuButton"
+              data-mdb-toggle="dropdown"
+              aria-expanded="false"
+            >
+            <i class="fa fa-cog" aria-hidden="true"></i>
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+              <li><a class="dropdown-item" style="background-color: lightblue" href="#">Editar</a></li>
+              <li><a class="dropdown-item" style="background-color:lightcoral"  href="#">Eliminar</a></li>
+            </ul>
+          </div>
 
-        <!--Botones-->
-        <div class="pt-2 " >
-            <div class="pt-2">
-                <button id="btnReporye" type="button" class="btn btn-outline-primary" data-mdb-ripple-color="dark" data-mdb-target="#exampleModal" data-mdb-whatever="@mdo" >
-                    Reporte
-                </button>
-                <button id="btnAsignar" type="button" class="btn btn-outline-primary" data-mdb-ripple-color="dark" data-mdb-toggle="modal" data-mdb-target="#exampleModal" data-mdb-whatever="@mdo" >
-                    Asignar Encuesta
-                </button>
-            </div>
-        </div>
-
-        <!--tablass-->
-        <div class="table-responsive pt-3">
-            <table id="tablaBien"  class="table align-middle table-striped ">
-                <thead>
-                  <tr class="table-success text-center">
-                    <th scope="col">ID</th>
-                    <th scope="col">Nombre proyecto</th>
-                    <th scope="col">Estado</th>
-                    <th scope="col">Fecha Inicio</th>
-                    <th scope="col">Fecha Termino</th>
-                    <th scope="col">Acciones</th>
-                  </tr>
-                </thead>
-                <tbody id="tbody1">
-                    <!--Contenido en Code.js-->
-                </tbody>
-              </table>
-        </div>
-
-        <!--Modal-->
-        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-          <div class="modal-dialog">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Encuestas LimeSurvey</h5>
-                <button type="button" class="btn-close" data-mdb-dismiss="modal" aria-label="Close"></button>
-              </div>
-              <div class="modal-body">
-                <form>
-
-                  <div class="mb-3">
-                    <label for="recipient-name" class="col-form-label">Lista de encuestas en el sistema de LimeSurvey:</label>
+          <div>
+            <div class="col-sm-12">
+              <div class="card"  style="margin-bottom: 10pt;">
+                <div class="card-body">
+                  <h5 id="tituloTarea" class="card-title" style="font-weight: bold;"></h5>
+                  <label style="font-weight: bold;">Proyecto:</label>
+                  <label id="tituloProyecto"></label>
+                  <!-- Tabs navs -->
+                  <ul class="nav nav-tabs mb-3" id="ex1" role="tablist">
+                    <li class="nav-item" role="presentation">
+                      <a
+                        class="nav-link active"
+                        id="ex1-tab-1"
+                        data-mdb-toggle="tab"
+                        href="#ex1-tabs-1"
+                        role="tab"
+                        aria-controls="ex1-tabs-1"
+                        aria-selected="true"
+                        >Descripción:</a
+                      >
+                    </li>
+                  </ul>
+                    <!-- Tabs content -->
+                  <div class="tab-content" id="ex1-content">
+                    <div
+                      class="tab-pane fade show active"
+                      id="ex1-tabs-1"
+                      role="tabpanel"
+                      aria-labelledby="ex1-tab-1"
+                    >
+                    <label id="descripcion"></label>
+                    </div>
                   </div>
-
-                
-                  
-                  <div class="table-responsive pt-3">
-                    <table id="hola" class="table align-middle table-striped ">
-                        <thead>
-                          <tr class="table-success text-center">
-                            <th scope="col">Selección</th>
-                            <th class="sid" scope="col">ID</th>
-                            <th class="nombreGrupo" scope="col">Nombre proyecto</th>
-                          </tr>
-                        </thead>
-                        <tbody id="tbodyModal">
-                            
-                        </tbody>
-                      </table>
-                  </div> 
-
-                <div class="modal-footer">
-                  <button id="btnCancelarModal" type="button" class="btn btn-secondary" data-mdb-dismiss="modal">Cerrar</button>
-                  <button id="btnAsignarModal" type="submit" class="btn btn-primary">Asignar</button>
+                  <div>
+                  </div>
                 </div>
+            </div>
+          </div>
 
-                </form>
+
+          <div class="card shadow-5"  style="margin-bottom: 10pt;">
+            <div class="card-header">
+              <div class="row">
+                <div class="col-sm-11">
+                  <div class="form-outline">
+                    <input type="text" id="formTextExample1" class="form-control" aria-describedby="textExample1" />
+                    <label class="form-label" for="formTextExample1">Notas</label>
+                  </div>
+                </div>
+                <div class="col-sm-1">
+                  <button type="button" class="btn btn-primary">
+                    <i class="fa fa-paper-plane" aria-hidden="true"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div class="card-body">
+              <div id="divNotas"></div>
+              <div style="margin-bottom: 10pt;">
+                <i class="fa fa-user" aria-hidden="true"></i>
+                <label style="font-size:13pt;  color: blue;">Ricardo Velazquez Bautista</label>
+                <br>
+                <label style="padding-left: 20px;">Se realizo y tal  tal tal tal</label>
+              </div>
+              <div style="margin-bottom: 10pt;">
+                <i class="fa fa-user" aria-hidden="true"></i>
+                <label style="font-size:13pt; color: orange;">Raul Arturo Peredo Estudillo</label>
+                <br>
+                <label style="padding-left: 20px;">aaa daewdgawy duwahduiwa</label>
               </div>
             </div>
           </div>
+
+          
+
         </div>
-
-
-
-      </div>
     </main>
     
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.2.0/mdb.min.js"></script>
     <script src="js/alertify.min.js"></script>
-
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script src="js/verProyectos.js"></script>
+    <script src="js/fases/fase1.js"></script>
+    
 </body>
-
 </html>
 
