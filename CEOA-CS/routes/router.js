@@ -7,6 +7,7 @@ const perfil = require('../controllers/perfil')
 const lime = require('../controllers/LIME_Encuestas')
 const proyectos = require('../controllers/proyectos')
 const tareas = require('../controllers/tareas')
+const notasPrimer = require('../controllers/notasPrimerAcercamiento')
 const { liquid } = require('consolidate')
 
 
@@ -71,6 +72,9 @@ router.get('/api/proyectos/info/:id',authController.isAuthenticated, proyectos.m
 router.get('/api/tareas/:id',authController.isAuthenticated, tareas.mostrar)
 router.post('/api/tareas/crear',authController.isAuthenticated, tareas.crear)
 router.get('/api/tareas/info/:id',authController.isAuthenticated, tareas.mostrarPrimerInvividual)
+    //2. Notas
+    router.get('/api/notas/:id',authController.isAuthenticated, notasPrimer.mostrar)
+    router.post('/api/notas/crear',authController.isAuthenticated, notasPrimer.crear)
 
     //2. Oficio responsable
 router.get('/api/tareas/oficio/:id',authController.isAuthenticated,tareas.mostrarOficio)

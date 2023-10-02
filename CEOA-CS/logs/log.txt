@@ -1,0 +1,48 @@
+========================
+Mon Jun 12 2023 12:10:34 GMT-0600 (hora estándar central)
+Usuario: rperedo inició sesión
+LimeToken: bqOjhX786f9NBBLEApfEAMXFnwcUnr9d
+JWToken: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTksImlhdCI6MTY4NjU5MzQzMiwiZXhwIjoxNjg2NTk0MzMyfQ.rNqxhXkxnWSEVEcqNrgow9tInKlq4-UV1d04ABmNdV0
+========================
+========================
+Mon Jun 26 2023 09:29:25 GMT-0600 (hora estándar central)
+Usuario: rperedo inició sesión
+LimeToken: null
+JWToken: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTksImlhdCI6MTY4Nzc5MzM1NCwiZXhwIjoxNjg3Nzk0MjU0fQ.ukL7YPaCw2LAYAJKEgkOsmberccI0ExmQk9M9l3NAH4
+========================
+========================
+Mon Jun 26 2023 09:29:42 GMT-0600 (hora estándar central)
+Usuario: rperedo inició sesión
+LimeToken: null
+JWToken: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTksImlhdCI6MTY4Nzc5MzM3MSwiZXhwIjoxNjg3Nzk0MjcxfQ.iz9TtxY04dRnwhXWGsZn0S7iB5qW_1EvrJv-sFB9Wfc
+========================
+========================
+Mon Jun 26 2023 09:30:41 GMT-0600 (hora estándar central)
+Usuario: rperedo inició sesión
+LimeToken: lf2I06jLCZsCnI~nJBZnm3AWBNxPacjF
+JWToken: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTksImlhdCI6MTY4Nzc5MzQ0MCwiZXhwIjoxNjg3Nzk0MzQwfQ.CDyeP-oC9klwlF_LOh1oV8c1PqC0DrUrRJr5qoF1_q0
+========================
+========================
+Mon Jun 26 2023 10:13:50 GMT-0600 (hora estándar central)
+Usuario: rperedo inició sesión
+LimeToken: null
+JWToken: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTksImlhdCI6MTY4Nzc5NjAzMCwiZXhwIjoxNjg3Nzk2OTMwfQ.Fl3LSiyHmK5_Tq7g_TM8Y3YFkL0kLAy00RuoOlbEo58
+========================
+========================
+Mon Jun 26 2023 10:31:43 GMT-0600 (hora estándar central)
+Usuario: rperedo inició sesión
+LimeToken: xHEPKZ6IqQeaInx060_~wS713p2bkP8C
+JWToken: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTksImlhdCI6MTY4Nzc5NzEwMiwiZXhwIjoxNjg3Nzk4MDAyfQ.kztbGlOZbHgFGae-W9ozy-StSx1ngf24ZBvwzlg0zgQ
+========================
+========================
+Mon Jun 26 2023 10:55:57 GMT-0600 (hora estándar central)
+Usuario: rperedo inició sesión
+LimeToken: srcW7943a0C_wpQtuvdvMiEfueZnLn3M
+JWToken: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTksImlhdCI6MTY4Nzc5ODU1NywiZXhwIjoxNjg3Nzk5NDU3fQ.gOM-NF4UyZnOeecureLtqTdgWrjITqzTjHMrXfIXwdg
+========================
+========================
+Mon Jun 26 2023 11:25:21 GMT-0600 (hora estándar central)
+Usuario: rperedo inició sesión
+LimeToken: PnpLphs_ZYfEWI2Xj_X42BkF5HX3pazJ
+JWToken: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTksImlhdCI6MTY4NzgwMDMyMCwiZXhwIjoxNjg3ODAxMjIwfQ.vvwc5T8H0StuyHPv2VZ3TnQkpmLTRRkVZu5VbaxWWX4
+========================
